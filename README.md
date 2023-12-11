@@ -1,39 +1,177 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# [Table of contents](#top)<br>
+-1. [Shooter Overview](#1-shooter-overview)<br>
 
-Welcome,
+-2. [Existing Features](#existing-features)<br>
+- [Favicon](#favicon)<br>
+- [404 Page](#404)<br>
+- [The Landing Page](#landing-page)<br>
+- [The Game Playing Area](#the-game-playing-area)<br>
+- [The Game Over Page](#game-over-page")<br>
+- [The 404 Error Page](#404-error-page)<br>
+- [Features left to implement](#features-left-to-implement)<br>
+	
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+-3. [Wireframes](#3-wireframes)
+ - [Wireframe Landing Page](#index-landing-page)<br>
+ - [Main Game playing area](#wireframe-main-game-playing-area)<br>
+- [Game over page](#wireframe-game-over-page)<br>
+- [404 Page](#wireframe-404-page)<br>
 
-## Codeanywhere Reminders
+-4. [Technologies](#technologies)<br>
+- [HTML](#html)<br>
+- [CSS](#css)<br>
+- [JavaScript](#javascript)<br>
+- [Git](#git)<br>
+- [GitHub](#github)<br>
+- [Balsamiq](#balsamiq)<br>
+- [Apache2 sandbox](#apache2)<br>
+- [Favicon.io](#favicon)<br>
+- [CraftPix](#craftpix)<br>
+- [VSCodium on Ubuntu Linux](#vscode)<br>
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
 
-`python3 -m http.server`
+-5. [Testing](#testing)<br>
+   - [Accessibility](#accessibility)<br>
+   - [Lighthouse testing](#lighthouse-testing)<br>
+    - [Desktop](#desktop)<br>
+    - [Mobile](#mobile)<br>
+   - [Functional tests](#functional-tests)<br>
+   - [Validation of code](#validation-of-code)<br>
+    - [CSS](#css)<br>
+    - [HTML](#html)<br>
+    - [JavaScript](#javascript)<br>
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+-6. [Deployment](#deployment)<br>
+-7. [Credits](#credits)<br>
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-`http_server`
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
----
 
-Happy coding!
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 1. Shooter Overview
+
+This project is about a simple 2D shooter game written in JavaScript with HTML and CSS. Link to online website HERE todo
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 3. Wireframes
+
+### Index Landing page
+
+
+Above shows the landing page for a Desktop.
+
+
+
+Above shows a landing page for a mobile device.
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
+
+### Wireframe Main Game Playing Area
+
+Above shows game for Desktop.
+
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
+
+Above shows the game for a mobile device.
+
+### Wireframe game over page
+
+Above shows the Game Over page for a Desktop.
+
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
+
+Above shows the game over screen for a mobile device.
+
+### Wireframe 404 page 
+
+Above shows the 404 not found screen for mobile and Desktop. It redirects to the landing page after 10 seconds.
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
+
+## Credits
+W3schools.com
+Balsamiq
+
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
+
+
+
