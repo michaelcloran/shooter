@@ -162,15 +162,19 @@ function updateGameArea() {
             myGameArea.stop();
         } 
     }
+    let shot_index = 0;
     for(let shot of shoot){//collision detection with weapons firing
         let index = 0;
         for(let enemy of enemies){
             
             if (enemy.collisionDetection(shot)) {
                 enemies.splice(index, 1);
+                shoot.splice(shot_index,1);
+                console.log("shot_index"+shot_index);
             } 
             index++;
         }
+        shot_index++
     }
   
     myGameArea.clear();
@@ -184,8 +188,7 @@ function updateGameArea() {
 
         if(myGameArea.keys && myGameArea.keys[32]) {//spacebar
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_enemy");
-            
-            //shot.speedY= 10; 
+             
             shoot.push(shot);
         
         }
