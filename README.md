@@ -3,7 +3,6 @@
 
 -2. [Existing Features](#existing-features)<br>
 - [Favicon](#favicon)<br>
-- [404 Page](#404)<br>
 - [The Landing Page](#landing-page)<br>
 - [The Game Playing Area](#the-game-playing-area)<br>
 - [The Game Over Page](#game-over-page")<br>
