@@ -212,6 +212,13 @@ git add .<br>
 git commit -m "docs initial commit"<br>
 git push<br>
 Things are now setup for development<br>
+
+### To deploy a live website
+
+I went to GitHub logged in choose repo Shooter and clicked on settings
+and then pages. I then clicked on source delpoy from branch and branch
+from dropdown choose main and root and clicked on save.
+
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>
