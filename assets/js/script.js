@@ -53,6 +53,9 @@ function runGame(){
     
 }
 
+/**
+ * setsup the game area with event listeners for keyup and keydown
+ */
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
@@ -90,12 +93,25 @@ var myGameArea = {
     }
 }
 
-function component(width, height, color, x, y, type) {
+/**
+ * 
+ * component
+ * is the main object of the game 
+ * used for defender and enemy aswell as shots
+ * @param {Width of image} width 
+ * @param {Height of image} height 
+ * @param {The image url} image_url 
+ * @param {the x coordinate of image} x 
+ * @param {the y coordinate of image} y 
+ * @param {eith a defender or enemy} type 
+ */
+
+function component(width, height, image_url, x, y, type) {
     this.type = type;
     if (type == "image_defender" || type == "image_enemy") {
         this.image = new Image();
         
-        this.image.src = color;
+        this.image.src = image_url;
     
     }
     
@@ -103,9 +119,6 @@ function component(width, height, color, x, y, type) {
     this.height = height;
     this.speedX = 0;
     this.speedY = 0;
-    this.speed = 0;
-    this.angle = 0;
-    this.moveAngle = 0;
     this.x = x;
     this.y = y;    
     this.update = function() {
@@ -129,7 +142,7 @@ function component(width, height, color, x, y, type) {
                     this.width, this.height);
             }
         }else {
-            ctx.fillStyle = color;
+            ctx.fillStyle = blue;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
         ctx.restore();
@@ -164,6 +177,11 @@ function component(width, height, color, x, y, type) {
       }
 }
 
+/**
+ * updateGameArea
+ * 
+ * updates the game area
+ */
 function updateGameArea() {
 
     for(let enemy of enemies){//collision detection with spaceships
@@ -186,23 +204,28 @@ function updateGameArea() {
         shot_index++
     }
   
+    /* clears the gameArea for a new paint*/
     myGameArea.clear();
     myGamePiece.moveAngle = 0;
     myGamePiece.speed = 0;
 
+    // tests for input
     if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }
     if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }
     if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }
     if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }
     
+    //updates myGamePiece
     myGamePiece.newPos();
     myGamePiece.update();
 
+    //updates every shot
     for(let shot of bullets){
         shot.newPos();
         shot.update();
     }
 
+    //updates every enemy
     for(let item of enemies){
         item.speedY = -1;
         item.newPos();
