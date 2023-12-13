@@ -137,29 +137,51 @@ function component(width, height, color, x, y, type) {
             }
         }
     }
+    this.collisionDetection = function(otherobj) {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = otherobj.x;
+        var otherright = otherobj.x + (otherobj.width);
+        var othertop = otherobj.y;
+        var otherbottom = otherobj.y + (otherobj.height);
+        var crash = true;
+        if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) ||(myleft > otherright)) {
+          crash = false;
+        }
+        return crash;
+      }
 }
 
 function updateGameArea() {
-    myGameArea.clear();
-    myGamePiece.moveAngle = 0;
-    myGamePiece.speed = 0;
 
-    
-  
-if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }
-if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }
-if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }
-if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }
+    for(let enemy of enemies){
+        if (myGamePiece.collisionDetection(enemy)) {
+            myGameArea.stop();
+        } else {
 
-
-    myGamePiece.newPos();
-    myGamePiece.update();
-
-    for(let item of enemies){
-        console.log("tp1:"+item);
-        item.speedY = -1;
-        item.newPos();
-        item.update();
+            myGameArea.clear();
+            myGamePiece.moveAngle = 0;
+            myGamePiece.speed = 0;
+         }
     }
     
+  
+        if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }
+        if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }
+        if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }
+        if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }
+
+
+        myGamePiece.newPos();
+        myGamePiece.update();
+
+        for(let item of enemies){
+            console.log("tp1:"+item);
+            item.speedY = -1;
+            item.newPos();
+            item.update();
+        }
+   
 }
