@@ -11,7 +11,7 @@ var myGamePiece;
 
 var enemies = [];
 var enemyInitialPositions = [ 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-var shoot = [];
+var bullets = [];
 
 /**
  * the main game "loop", called when the script is first loaded
@@ -73,6 +73,13 @@ var myGameArea = {
             
             myGamePiece.speedX = 0;
             myGamePiece.speedY = 0;
+
+            if(e.keyCode == 32) {//spacebar
+                let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_enemy");
+                shot.speedY = +10;
+                bullets.push(shot);
+                
+            }
         })
         },
     clear : function() {
@@ -165,13 +172,13 @@ function updateGameArea() {
         } 
     }
     let shot_index = 0;
-    for(let shot of shoot){//collision detection with weapons firing
+    for(let shot of bullets){//collision detection with weapons firing
         let index = 0;
         for(let enemy of enemies){
             
             if (enemy.collisionDetection(shot)) {
                 enemies.splice(index, 1);
-                shoot.splice(shot_index,1);
+                bullets.splice(shot_index,1);
                 console.log("shot_index"+shot_index);
             } 
             index++;
@@ -180,33 +187,26 @@ function updateGameArea() {
     }
   
     myGameArea.clear();
-            myGamePiece.moveAngle = 0;
-            myGamePiece.speed = 0;
+    myGamePiece.moveAngle = 0;
+    myGamePiece.speed = 0;
 
-        if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }
-        if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }
-        if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }
-        if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }
+    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }
+    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }
+    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }
+    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }
+    
+    myGamePiece.newPos();
+    myGamePiece.update();
 
-        if(myGameArea.keys && myGameArea.keys[32]) {//spacebar
-            let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_enemy");
-            shot.speedY = +10;
-            shoot.push(shot);
-        
-        }
+    for(let shot of bullets){
+        shot.newPos();
+        shot.update();
+    }
 
-        myGamePiece.newPos();
-        myGamePiece.update();
-
-        for(let shot of shoot){
-            shot.newPos();
-            shot.update();
-        }
-
-        for(let item of enemies){
-            item.speedY = -1;
-            item.newPos();
-            item.update();
-        }
+    for(let item of enemies){
+        item.speedY = -1;
+        item.newPos();
+        item.update();
+    }
    
 }
