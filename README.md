@@ -17,7 +17,7 @@
 - [Game over page](#wireframe-game-over-page)<br>
 - [404 Page](#wireframe-404-page)<br>
 
--4. [Technologies](#technologies)<br>
+-4. [Technologies](#4-technologies)<br>
 - [HTML](#html)<br>
 - [CSS](#css)<br>
 - [JavaScript](#javascript)<br>
@@ -173,6 +173,18 @@ Above shows the 404 not found screen for mobile and Desktop. It redirects to the
     <a href="#top" >Goto Top</a>
 </p>
 
+## 4. Technologies
+- HTML<br>
+- CSS<br>
+- JavaScript<br>
+- Git<br>
+- GitHub<br>
+- Balsamiq<br>
+- Apache2 sandbox<br>
+- Favicon.io<br>
+- CraftPix<br> I went to website craftpix.net and done a search for space and found a free image pack
+- VSCodium on Ubuntu Linux<br>
+
 ## Deployment
 
 For Deployment I setup the project/repo folder shooter on GitHub with template 
@@ -233,6 +245,4 @@ Balsamiq
 <p align="right">
     <a href="#top" >Goto Top</a>
 </p>
-
-
 
