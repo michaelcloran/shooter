@@ -48,33 +48,6 @@
 <p align="right">
     <a href="#top" >Goto Top</a>
 </p>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## 1. Shooter Overview
@@ -84,39 +57,6 @@ This project is about a simple 2D shooter game written in JavaScript with HTML a
 <p align="right">
     <a href="#top" >Goto Top</a>
 </p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## 3. Wireframes
 
@@ -182,8 +122,14 @@ Above shows the 404 not found screen for mobile and Desktop. It redirects to the
 - Balsamiq<br>
 - Apache2 sandbox<br>
 - Favicon.io<br>
-- CraftPix<br> I went to website craftpix.net and done a search for space and found a free image pack. Then I unzipped it into my Code Institute folder for PP2 and found 4 folders with images within each.1. PSD for fighter , bomber and corvette spritelist. 2. Fighter with a individual sprite list per state for eg Damage, destroyed, turn_2, turn_1, Attack_2, Attack_1, Boost, Move, Idle, Charge 1 and 2. The other 2 folders are for Bomber and Corvette space ships. The game pack came with a lot of images. I am going to go for minimum viable project MVP first and then add based on time!!.
+#### CraftPix<br> 
+I went to website craftpix.net and done a search for space and found a free image pack. Then I unzipped it into my Code Institute folder for PP2 and found 4 folders with images within each.1. PSD for fighter , bomber and corvette spritelist. 2. Fighter with a individual sprite list per state for eg Damage, destroyed, turn_2, turn_1, Attack_2, Attack_1, Boost, Move, Idle, Charge 1 and 2. The other 2 folders are for Bomber and Corvette space ships. The game pack came with a lot of images. I am going to go for minimum viable project MVP first and then add based on time!!.
 - VSCodium on Ubuntu Linux<br>
+
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
 
 ## Deployment
 
