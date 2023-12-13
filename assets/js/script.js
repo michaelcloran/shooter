@@ -103,7 +103,7 @@ var myGameArea = {
  * @param {The image url} image_url 
  * @param {the x coordinate of image} x 
  * @param {the y coordinate of image} y 
- * @param {eith a defender or enemy} type 
+ * @param {either a defender or enemy} type 
  */
 
 function component(width, height, image_url, x, y, type) {
