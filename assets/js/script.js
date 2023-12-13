@@ -163,10 +163,13 @@ function updateGameArea() {
         } 
     }
     for(let shot of shoot){//collision detection with weapons firing
+        let index = 0;
         for(let enemy of enemies){
+            
             if (enemy.collisionDetection(shot)) {
-                enemies.pop(enemy);
+                enemies.splice(index, 1);
             } 
+            index++;
         }
     }
   
