@@ -129,10 +129,11 @@ function component(width, height, color, x, y, type) {
         this.x += this.speedX;
         this.y -= this.speedY; 
 
-        for(let i=0; i< enemies.length; i++){
-            if(enemies[i].y > window.innerHeight){
-                enemies[i].x = enemyInitialPositions[i];
-                enemies[i].y = 100;
+        let i = 0;
+        for(let item of enemies){
+            if(item.y > window.innerHeight){
+                item.x =  Math.floor(Math.random() * window.innerWidth);
+                item.y = 100;
             }
         }
     }
@@ -154,11 +155,11 @@ if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }
     myGamePiece.newPos();
     myGamePiece.update();
 
-    for(let i=0; i< enemies.length; i++){
-        console.log("tp1:"+i);
-        enemies[i].speedY = -1;
-        enemies[i].newPos();
-        enemies[i].update();
+    for(let item of enemies){
+        console.log("tp1:"+item);
+        item.speedY = -1;
+        item.newPos();
+        item.update();
     }
     
 }
