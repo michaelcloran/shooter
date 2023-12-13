@@ -11,6 +11,7 @@ var myGamePiece;
 
 var enemies = [];
 var enemyInitialPositions = [ 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+var shoot = [];
 
 /**
  * the main game "loop", called when the script is first loaded
@@ -156,29 +157,46 @@ function component(width, height, color, x, y, type) {
 
 function updateGameArea() {
 
-    for(let enemy of enemies){
+    for(let enemy of enemies){//collision detection with spaceships
         if (myGamePiece.collisionDetection(enemy)) {
             myGameArea.stop();
-        } else {
-
-            myGameArea.clear();
+        } 
+    }
+    for(let shot of shoot){//collision detection with weapons firing
+        for(let enemy of enemies){
+            if (enemy.collisionDetection(shot)) {
+                enemies.pop(enemy);
+            } 
+        }
+    }
+  
+    myGameArea.clear();
             myGamePiece.moveAngle = 0;
             myGamePiece.speed = 0;
-         }
-    }
-    
-  
+
         if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }
         if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }
         if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }
         if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }
 
+        if(myGameArea.keys && myGameArea.keys[32]) {//spacebar
+            let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_enemy");
+            
+            //shot.speedY= 10; 
+            shoot.push(shot);
+        
+        }
 
         myGamePiece.newPos();
         myGamePiece.update();
 
+        for(let shot of shoot){
+            shot.speedY = +10;
+            shot.newPos();
+            shot.update();
+        }
+
         for(let item of enemies){
-            console.log("tp1:"+item);
             item.speedY = -1;
             item.newPos();
             item.update();
