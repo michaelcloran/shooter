@@ -115,10 +115,12 @@ function component(width, height, color, x, y, type) {
                 this.width, this.height);
             
         } else if(type == "image_enemy"){
-            ctx.drawImage(this.image, 
-                this.x, 
-                this.y,
-                this.width, this.height);
+            if(this.y > 0){//for shots checks if the y position is off the screen
+                ctx.drawImage(this.image, 
+                    this.x, 
+                    this.y,
+                    this.width, this.height);
+            }
         }else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -188,7 +190,7 @@ function updateGameArea() {
 
         if(myGameArea.keys && myGameArea.keys[32]) {//spacebar
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_enemy");
-             
+            shot.speedY = +10;
             shoot.push(shot);
         
         }
@@ -197,7 +199,6 @@ function updateGameArea() {
         myGamePiece.update();
 
         for(let shot of shoot){
-            shot.speedY = +10;
             shot.newPos();
             shot.update();
         }
