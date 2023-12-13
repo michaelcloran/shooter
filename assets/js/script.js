@@ -49,6 +49,7 @@ function runGame(){
 
     //see if need to scale images for mobile or tablet
     if(window.innerWidth < 1000){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
+        document.getElementById("play-contianer").style.display= "block";
         myGamePiece.width = Math.floor(myGamePiece.width * 0.5),
         myGamePiece.height =  Math.floor(myGamePiece.height * 0.5)
         for(let enemy of enemies){

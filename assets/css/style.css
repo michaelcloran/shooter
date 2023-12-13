@@ -21,7 +21,9 @@ button{
 
 #play-contianer{
     overflow: auto;
+    display: none;
 }
+
 
 #button-shoot-left {
     float:left;
@@ -46,6 +48,7 @@ button{
     display: inline-block;
     font-size: 16px;
 }
+
 
 #left-button{
     clear:both;
