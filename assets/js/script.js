@@ -9,14 +9,47 @@ document.addEventListener("DOMContentLoaded", function(){
  */
 var myGamePiece;
 
+var enemies = [];
+var enemyInitialPositions = [ 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 
 /**
  * the main game "loop", called when the script is first loaded
  *
  */
 function runGame(){
-    myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-100, "image");
+    myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-100, "image_defender");
+
+    enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[0],100, "image_enemy");
+    enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[1],100, "image_enemy");
+
+    enemy3Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[2],100, "image_enemy");
+    enemy4Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[3],100, "image_enemy");
+
+    enemy5Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[4],100, "image_enemy");
+    enemy6Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[5],100, "image_enemy");
+
+    enemy7Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[6],100, "image_enemy");
+    enemy8Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[7],100, "image_enemy");
+
+    enemy9Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[8],100, "image_enemy");
+    enemy10Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[9],100, "image_enemy");
+    
+    
+    enemies.push(enemy1Piece);
+    enemies.push(enemy2Piece);
+    enemies.push(enemy3Piece);
+    enemies.push(enemy4Piece);
+    enemies.push(enemy5Piece);
+    enemies.push(enemy6Piece);
+    enemies.push(enemy7Piece);
+    enemies.push(enemy8Piece);
+    enemies.push(enemy9Piece);
+    enemies.push(enemy10Piece);
+
+
+
     myGameArea.start();
+    
 }
 
 var myGameArea = {
@@ -51,7 +84,7 @@ var myGameArea = {
 
 function component(width, height, color, x, y, type) {
     this.type = type;
-    if (type == "image") {
+    if (type == "image_defender" || type == "image_enemy") {
         this.image = new Image();
         
         this.image.src = color;
@@ -72,26 +105,36 @@ function component(width, height, color, x, y, type) {
         ctx.save();
        
         
-        if (type == "image") {
+        if (type == "image_defender") {
             ctx.translate(this.x, this.y);
-            ctx.rotate(this.angle);
+           // ctx.rotate(this.angle);
             ctx.drawImage(this.image, 
                 this.width / -2, 
                 this.height / -2,
                 this.width, this.height);
             
-        } else {
+        } else if(type == "image_enemy"){
+            ctx.drawImage(this.image, 
+                this.x, 
+                this.y,
+                this.width, this.height);
+        }else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
         ctx.restore();
     }
     this.newPos = function() {
-        /*this.angle += this.moveAngle * Math.PI / 180;
-        this.x += this.speed * Math.sin(this.angle);
-        this.y -= this.speed * Math.cos(this.angle);   */
+        
         this.x += this.speedX;
         this.y -= this.speedY; 
+
+        for(let i=0; i< enemies.length; i++){
+            if(enemies[i].y > window.innerHeight){
+                enemies[i].x = enemyInitialPositions[i];
+                enemies[i].y = 100;
+            }
+        }
     }
 }
 
@@ -99,12 +142,9 @@ function updateGameArea() {
     myGameArea.clear();
     myGamePiece.moveAngle = 0;
     myGamePiece.speed = 0;
-   /*
-    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.moveAngle = -1; }
-    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.moveAngle = 1; }
-    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speed= 1; }
-    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speed= -1; }
-*/
+
+    
+  
 if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }
 if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }
 if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }
@@ -113,4 +153,12 @@ if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }
 
     myGamePiece.newPos();
     myGamePiece.update();
+
+    for(let i=0; i< enemies.length; i++){
+        console.log("tp1:"+i);
+        enemies[i].speedY = -1;
+        enemies[i].newPos();
+        enemies[i].update();
+    }
+    
 }
