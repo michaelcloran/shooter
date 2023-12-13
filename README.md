@@ -241,6 +241,9 @@ from dropdown choose main and root and clicked on save.
 W3schools.com
 Balsamiq
 
+resize of images with canvas context
+https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
+
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>

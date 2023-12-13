@@ -1,5 +1,13 @@
 //to make sure the site is loaded
 document.addEventListener("DOMContentLoaded", function(){
+   /* document.getElementById("left-button").addEventListener("click",function(){
+        moveleft();
+    });*/
+    /*document.getElementById("#right-button").addEventListener("click",function(){
+        moveright();
+    });*/
+
+    ///document.getElementById("#left-button").addEventListener('touchend', function(e){moveleft();}, false);
 
     runGame();
 
@@ -18,7 +26,7 @@ var bullets = [];
  *
  */
 function runGame(){
-    myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-100, "image_defender");
+    myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-250, "image_defender");
 
     enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[0],100, "image_enemy");
     enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[1],100, "image_enemy");
@@ -34,8 +42,8 @@ function runGame(){
 
     enemy9Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[8],100, "image_enemy");
     enemy10Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[9],100, "image_enemy");
-    
-    
+
+
     enemies.push(enemy1Piece);
     enemies.push(enemy2Piece);
     enemies.push(enemy3Piece);
@@ -46,6 +54,17 @@ function runGame(){
     enemies.push(enemy8Piece);
     enemies.push(enemy9Piece);
     enemies.push(enemy10Piece);
+
+    //see if need to scale images for mobile or tablet
+    if(window.innerWidth < 1000){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
+        myGamePiece.width = Math.floor(myGamePiece.width * 0.5),
+        myGamePiece.height =  Math.floor(myGamePiece.height * 0.5)
+        for(let enemy of enemies){
+            enemy.width = Math.floor(enemy.width * 0.5),
+            enemy.height =  Math.floor(enemy.height * 0.5)
+        
+        }
+    }
 
 
 
@@ -60,7 +79,7 @@ var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
+        this.canvas.height = window.innerHeight-200;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -84,6 +103,28 @@ var myGameArea = {
                 
             }
         })
+        document.getElementById("left-button").addEventListener("click",function(){
+            if(myGamePiece.x > 104 ){
+                moveleft();
+            }  
+        });
+        document.getElementById("right-button").addEventListener("click",function(){
+            if(( myGamePiece.x+myGamePiece.width) < (window.innerWidth-104)){
+                moveright();
+            }
+        });
+        document.getElementById("button-shoot-right").addEventListener("click",function(){
+            let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_enemy");
+            shot.speedY = +10;
+            bullets.push(shot);
+        });
+        document.getElementById("button-shoot-left").addEventListener("click",function(){
+            let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_enemy");
+            shot.speedY = +10;
+            bullets.push(shot);
+        });
+
+
         },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -216,7 +257,12 @@ function updateGameArea() {
     if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }//ArrowDown
     
     //updates myGamePiece
-    myGamePiece.newPos();
+    if(myGamePiece.speedX == -5 && (myGamePiece.x) > 104){//left
+        myGamePiece.newPos();
+    }else if(myGamePiece.speedX == 5 && (myGamePiece.x+myGamePiece.width) < (window.innerWidth-104)){//right
+        myGamePiece.newPos();
+    }
+        
     myGamePiece.update();
 
     //updates every shot
@@ -232,4 +278,18 @@ function updateGameArea() {
         item.update();
     }
    
+}
+
+function moveleft() {
+    myGamePiece.speedX = -5; 
+     //updates myGamePiece
+     myGamePiece.newPos();
+     myGamePiece.update();
+}
+
+function moveright() {
+    myGamePiece.speedX = 5; 
+    //updates myGamePiece
+    myGamePiece.newPos();
+    myGamePiece.update();
 }
