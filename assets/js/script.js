@@ -210,10 +210,10 @@ function updateGameArea() {
     myGamePiece.speed = 0;
 
     // tests for input
-    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }
-    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }
-    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }
-    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }
+    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }//ArrowLeft
+    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }//ArrowRight
+    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }//UpArrow
+    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }//ArrowDown
     
     //updates myGamePiece
     myGamePiece.newPos();
