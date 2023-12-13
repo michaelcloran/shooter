@@ -128,7 +128,7 @@ function component(width, height, image_url, x, y, type) {
         
         if (type == "image_defender") {
             ctx.translate(this.x, this.y);
-           // ctx.rotate(this.angle);
+           
             ctx.drawImage(this.image, 
                 this.width / -2, 
                 this.height / -2,
