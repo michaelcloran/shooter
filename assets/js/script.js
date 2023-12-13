@@ -1,14 +1,6 @@
 //to make sure the site is loaded
 document.addEventListener("DOMContentLoaded", function(){
-   /* document.getElementById("left-button").addEventListener("click",function(){
-        moveleft();
-    });*/
-    /*document.getElementById("#right-button").addEventListener("click",function(){
-        moveright();
-    });*/
-
-    ///document.getElementById("#left-button").addEventListener('touchend', function(e){moveleft();}, false);
-
+  
     runGame();
 
 })

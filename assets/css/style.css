@@ -24,10 +24,7 @@ button{
 }
 
 #button-shoot-left {
-    
-    clear:right;
     float:left;
-    
     background-color: red; 
     border: none;
     color: white;
@@ -51,7 +48,7 @@ button{
 }
 
 #left-button{
-    
+    clear:both;
     float:left;
     background-color: blue; 
     border: none;
@@ -63,7 +60,7 @@ button{
     font-size: 16px;
 }
 #right-button {
-   
+   clear:both;
     float: right;
     background-color: blue; 
   border: none;
