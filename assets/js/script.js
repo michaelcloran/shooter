@@ -18,22 +18,22 @@ var bullets = [];
  *
  */
 function runGame(){
-    myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-250, "image_defender");
+    myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-83, "image_defender");
 
-    enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[0],100, "image_enemy");
-    enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[1],100, "image_enemy");
+    enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[0],0, "image_enemy");
+    enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[1],0, "image_enemy");
 
-    enemy3Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[2],100, "image_enemy");
-    enemy4Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[3],100, "image_enemy");
+    enemy3Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[2],0, "image_enemy");
+    enemy4Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[3],0, "image_enemy");
 
-    enemy5Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[4],100, "image_enemy");
-    enemy6Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[5],100, "image_enemy");
+    enemy5Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[4],0, "image_enemy");
+    enemy6Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[5],0, "image_enemy");
 
-    enemy7Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[6],100, "image_enemy");
-    enemy8Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[7],100, "image_enemy");
+    enemy7Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[6],0, "image_enemy");
+    enemy8Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[7],0, "image_enemy");
 
-    enemy9Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[8],100, "image_enemy");
-    enemy10Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[9],100, "image_enemy");
+    enemy9Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[8],0, "image_enemy");
+    enemy10Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[9],0, "image_enemy");
 
 
     enemies.push(enemy1Piece);
@@ -47,22 +47,18 @@ function runGame(){
     enemies.push(enemy9Piece);
     enemies.push(enemy10Piece);
 
-    //see if need to scale images for mobile or tablet
-    if(window.innerWidth < 1000){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
+    //see if need to scale images for mobile or tablet                                      //digout https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
+    if(window.innerWidth < 1000 || window.matchMedia("(orientation: landscape)").matches){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
         document.getElementById("play-contianer").style.display= "block";
-        myGamePiece.width = Math.floor(myGamePiece.width * 0.5),
-        myGamePiece.height =  Math.floor(myGamePiece.height * 0.5)
+        myGamePiece.width = Math.floor(myGamePiece.width * 0.3),
+        myGamePiece.height =  Math.floor(myGamePiece.height * 0.3)
         for(let enemy of enemies){
-            enemy.width = Math.floor(enemy.width * 0.5),
-            enemy.height =  Math.floor(enemy.height * 0.5)
+            enemy.width = Math.floor(enemy.width * 0.2),
+            enemy.height =  Math.floor(enemy.height * 0.2)
         
         }
     }
-
-
-
-    myGameArea.start();
-    
+    myGameArea.start(); 
 }
 
 /**
@@ -72,7 +68,7 @@ var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight-200;
+        this.canvas.height = window.innerHeight-myGamePiece.height;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
@@ -196,7 +192,7 @@ function component(width, height, image_url, x, y, type) {
         for(let item of enemies){
             if(item.y > window.innerHeight){
                 item.x =  Math.floor(Math.random() * window.innerWidth);
-                item.y = 100;
+                item.y = 0;
             }
         }
     }
