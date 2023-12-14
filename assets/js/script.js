@@ -97,12 +97,18 @@ var myGameArea = {
             }
         })
         document.getElementById("left-button").addEventListener("click",function(){
-            if(myGamePiece.x > 104 ){
+            /*if(myGamePiece.x > myGamePiece.width ){
                 moveleft();
-            }  
+            }  */
+            if((myGamePiece.x) > (myGamePiece.width/2 - 5)){
+                moveleft();
+            }
         });
         document.getElementById("right-button").addEventListener("click",function(){
-            if(( myGamePiece.x+myGamePiece.width) < (window.innerWidth-104)){
+            /*if(( myGamePiece.x+myGamePiece.width) < (window.innerWidth-myGamePiece.width)){
+                moveright();
+            }*/
+            if((myGamePiece.x + (myGamePiece.width/2)) < (window.innerWidth - (myGamePiece.width/2) + 5)){
                 moveright();
             }
         });
@@ -249,10 +255,10 @@ function updateGameArea() {
     if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }//UpArrow
     if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }//ArrowDown
     
-    //updates myGamePiece
-    if(myGamePiece.speedX == -5 && (myGamePiece.x) > 104){//left
+    //updates myGamePiece()
+    if(myGamePiece.speedX == -5 && (myGamePiece.x) > (myGamePiece.width/2 - 5) ){//left
         myGamePiece.newPos();
-    }else if(myGamePiece.speedX == 5 && (myGamePiece.x+myGamePiece.width) < (window.innerWidth-104)){//right
+    }else if(myGamePiece.speedX == 5 && ((myGamePiece.x + (myGamePiece.width/2)) < (window.innerWidth - (myGamePiece.width/2) + 5))){//right
         myGamePiece.newPos();
     }
         

@@ -1,10 +1,16 @@
 /* --------- Global style */
-
+*{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color:black;
+}
 body {
-    background-color: white;
+    /*background-color: white;*/
     font-family: "Raleway", sans-serif;
     color: #445361;
     text-align: center;
+    margin: 0;
 }
 
 #container{
@@ -21,6 +27,7 @@ button{
 
 #play-contianer{
     overflow: auto;
+  
     display: none;
 }
 
