@@ -18,7 +18,7 @@ var bullets = [];
  *
  */
 function runGame(){
-    myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-83, "image_defender");
+    myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-55, "image_defender");
 
     enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[0],0, "image_enemy");
     enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[1],0, "image_enemy");
@@ -73,6 +73,7 @@ var myGameArea = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
+
         window.addEventListener('keydown', function (e) {
             e.preventDefault();
             myGameArea.keys = (myGameArea.keys || []);
@@ -85,8 +86,9 @@ var myGameArea = {
             myGamePiece.speedX = 0;
             myGamePiece.speedY = 0;
 
-            if(e.keyCode == 32) {//spacebar
-                let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_enemy");
+           // if(e.key == ' '){console.log("space pressed");}
+            if(e.key == ' ') {//spacebar
+                let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
                 shot.speedY = +10;
                 bullets.push(shot);
                 
@@ -144,7 +146,7 @@ var myGameArea = {
 
 function component(width, height, image_url, x, y, type) {
     this.type = type;
-    if (type == "image_defender" || type == "image_enemy") {
+    if (type == "image_defender" || type == "image_enemy" || type == "image_shot") {
         this.image = new Image();
         
         this.image.src = image_url;
@@ -170,12 +172,21 @@ function component(width, height, image_url, x, y, type) {
                 this.height / -2,
                 this.width, this.height);
             
-        } else if(type == "image_enemy"){
+        } else if(type == "image_enemy" || type == 'image_shot'){
             if(this.y > 0){//for shots checks if the y position is off the screen
                 ctx.drawImage(this.image, 
                     this.x, 
                     this.y,
                     this.width, this.height);
+            }else if(type == "image_shot"){
+                let index = 0;
+                for(let shot of bullets){
+                    if(shot.x === this.x && shot.y == this.y){
+                        bullets.splice(index,1);
+                        console.log("removing bullet:"+index);
+                    }
+                    index++;
+                } 
             }
         }else {
             ctx.fillStyle = blue;
