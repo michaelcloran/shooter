@@ -12,7 +12,7 @@ var myGamePiece;
 var enemies = [];
 var enemyInitialPositions = [ 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 var bullets = [];
-
+var enemyBullets = [];
 /**
  * the main game "loop", called when the script is first loaded
  *
@@ -48,7 +48,7 @@ function runGame(){
     enemies.push(enemy10Piece);
 
     //see if need to scale images for mobile or tablet                                      //digout https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
-    if(window.innerWidth < 1000 || window.matchMedia("(orientation: landscape)").matches){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
+    if(window.innerWidth < 1000 || window.orientation == 90 || window.orientation === -90){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
         document.getElementById("play-contianer").style.display= "block";
         myGamePiece.width = Math.floor(myGamePiece.width * 0.3),
         myGamePiece.height =  Math.floor(myGamePiece.height * 0.3)
@@ -128,6 +128,12 @@ var myGameArea = {
     },
     stop : function() {
         clearInterval(this.interval);
+    },
+    update : function(){
+        this.frameNo++;
+        if(this.frameNo > 1000){
+            this.frameNo = 0;
+        }
     }
 }
 
@@ -224,6 +230,14 @@ function component(width, height, image_url, x, y, type) {
       }
 }
 
+function getRandomEnemy(enemies){
+    let randomeEnemyIndex = Math.floor(Math.random() * enemies.length);
+    console.log("randomeEnemyIndex:"+randomeEnemyIndex);
+    if(randomeEnemyIndex < enemies.length){
+        return randomeEnemyIndex;    
+    }
+    return 0;
+}
 /**
  * updateGameArea
  * 
@@ -231,13 +245,15 @@ function component(width, height, image_url, x, y, type) {
  */
 function updateGameArea() {
 
+    
+
     for(let enemy of enemies){//collision detection with spaceships
         if (myGamePiece.collisionDetection(enemy)) {
             myGameArea.stop();
         } 
     }
     let shot_index = 0;
-    for(let shot of bullets){//collision detection with weapons firing
+    for(let shot of bullets){//collision detection with weapons firing from defender
         let index = 0;
         for(let enemy of enemies){
             
@@ -250,11 +266,31 @@ function updateGameArea() {
         }
         shot_index++
     }
+
+    let enemy_shot_index = 0;
+    for(let shot of enemyBullets){
+        if(myGamePiece.collisionDetection(shot)){
+            enemyBullets.splice(enemy_shot_index,1);
+            myGameArea.stop(); 
+        }
+        enemy_shot_index++;
+    }
   
     /* clears the gameArea for a new paint*/
     myGameArea.clear();
     myGamePiece.moveAngle = 0;
     myGamePiece.speed = 0;
+
+    console.log("enemies L:"+enemies.length);
+    numberEnemies = enemies.length;
+    //this.interval = setInterval(enemyShoots, 20000);
+    myGameArea.update();
+    console.log("frameNo:"+myGameArea.frameNo);
+    console.log("enemies.lenth:"+numberEnemies);
+    if(myGameArea.frameNo  % 100 == 0 && numberEnemies > 0){
+        enemyShoots();
+    }
+    
 
     // tests for input
     if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }//ArrowLeft
@@ -277,13 +313,37 @@ function updateGameArea() {
         shot.update();
     }
 
+//update enemy bullets/shots
+let sIndex = 0;
+for(let eShot of enemyBullets){
+        
+    eShot.newPos();
+    eShot.update();
+    if(eShot.y >= window.innerHeight){
+        enemyBullets.splice(sIndex,1);
+        console.log("garbage Collection:"+sIndex);
+    }
+    sIndex++;
+}
+
     //updates every enemy
     for(let item of enemies){
         item.speedY = -1;
         item.newPos();
         item.update();
-    }
-   
+    }  
+}
+
+function enemyShoots(){
+    let randomEnemy = getRandomEnemy(enemies);
+    
+    console.log("random E:"+randomEnemy);
+    let shooter = enemies[randomEnemy];
+    console.log("shooter.x:"+shooter.x);
+    let eShot = new component(28,28,"assets/images/fighter/shot_weapon1.png", shooter.x+shooter.width/2, shooter.y, "image_shot");
+    eShot.speedY = -10;
+    enemyBullets.push(eShot);
+    
 }
 
 function moveleft() {
