@@ -11,18 +11,51 @@ body {
 }
 
 #container{
-    font-size: 2rem;
-    margin: 10%;
-    border: 1px solid #4CAF50;
-    background-color:lightgreen;
-    padding-bottom: 100px;
+    
+    height: 80vh;
+    
 }
 
+#container h1{
+   
+    background-color:blue;
+    top:90px;
+    left:100px;/*260px*/
+    font-size: 2rem;
+    text-align: center;
+    color: orange;
+}
+#container p.some-text{
+    
+    background-color: blue;
+    color:orange;
+    width: 80vw;
+    text-align:center;
+    position:fixed;
+    font-size: 1rem;
+    top:220px;
+    left: 40px;
+}
+.some-more-text{
+    background-color: blue;
+    color:orange;
+    width: 80vw;
+    text-align:center;
+    position:absolute;
+    font-size: 1rem;
+    top:360px;
+    left: 40px;
+}
 #score-value{
     color: white;
 }
 button{
-    background-color: lightblue;   
+    padding: 20px;
+    margin:40px;
+    border-style: solid;
+    border-width: 20px, 5px;
+    border-color: orange;
+    background-color: lightskyblue;   
 }
 
 #play-contianer{

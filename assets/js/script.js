@@ -1,9 +1,15 @@
 //to make sure the site is loaded
 document.addEventListener("DOMContentLoaded", function(){
   
+    var x =document.getElementById("gameAudio");
+    //x.play();
     runGame();
 
-})
+});
+
+function playAudio(){
+    x.play();
+}
 /**
  * Globals
  */
@@ -23,13 +29,16 @@ var enemyImages = [[
     "assets/images/corvette/Attack_1_3.png",
     "assets/images/corvette/Attack_1_4.png"]
 ] ;
+
+
 /**
  * the main game "loop", called when the script is first loaded
  *
  */
 function runGame(){
+   
     if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){
-        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-55, "image_defender");
+        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-120, "image_defender");//-55
     }else{
         myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-120, "image_defender");
     }
@@ -82,7 +91,7 @@ var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight-myGamePiece.height;
+        this.canvas.height = window.innerHeight-100;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
