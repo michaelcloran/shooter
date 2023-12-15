@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Michael Cloran" >
+    <meta name="description" content="Space Invaders ,shooter, game">
+    <meta name="keywords" content="Space Invaders,2D game,shooter">
+
     <title>Shooter</title>
 </head>
 <body onload="playGameOverSound()">
     <h1>Game Over</h1>
     <h2>Congratulations on getting this far!!</h2>
-
+    <button type="button" id="playAgain">Play again</button>
     <script>
         var gameOverSound = "assets/sounds/game-over.mp3";
 
         var link = window.location.href;
         link=link.substring(link.indexOf("?")+1,link.length);
         document.write("Your Score was:"+link+"");
+
+        document.getElementById("playAgain").addEventListener("click", function(){
+            window.location = "index.html";
+        });
 
         function playGameOverSound(){
             const audio = new Audio(gameOverSound);
