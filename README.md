@@ -188,7 +188,10 @@ W3schools.com
 Balsamiq
 
 resize of images with canvas context
-https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
+https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly <br>
+
+Awesome laser sound: https://pixabay.com/sound-effects/search/laser/
+sound track background: https://cdn.pixabay.com/
 
 <hr>
 <p align="right">

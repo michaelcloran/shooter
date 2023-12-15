@@ -402,6 +402,7 @@ function enemyShoots(shooter){
     let eShot = new component(28,28,"assets/images/fighter/shot_weapon1.png", shooter.x+shooter.width/2, shooter.y, "image_shot");
     eShot.speedY = -10;
     enemyBullets.push(eShot);
+    playEnemyLaser();
     
 }
 /*
@@ -425,5 +426,10 @@ function moveright() {
 
 function playLaser() { 
     const audio = new Audio(laserSound);
+    audio.play();
+} 
+
+function playEnemyLaser() { 
+    const audio = new Audio(enemyLaserSound);
     audio.play();
 } 
