@@ -60,81 +60,29 @@ body {
 
 #play-contianer{
    
-  /*  display: none;*/
+  /*display: none;*/
 }
 
 #left{
-    
     height:100vh;
-   }
-   #right{
-   
+    display:none;
+}
 
+#right{
    height: 100vh;
-   
-   }
-   #center{
+   display:none;
+}
+
+#center{
    background-color:lightblue;
-   
    height:100vh;
-   }
+}
 
 #left-button, #right-button{
     height:100vh;
-   }
-   #left-shoot-button, #right-shoot-button{
+}
+
+#left-shoot-button, #right-shoot-button{
     height: 100vh;
     background-color:red;
-   }
-
-/*#button-shoot-left {
-    float:left;
-    background-color: red; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-   display: inline-block;
-    font-size: 16px;
 }
-
-#button-shoot-right{
-    float:right;
-    background-color: red; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-
-#left-button{
-    clear:both;
-    float:left;
-    background-color: blue; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-#right-button {
-   clear:both;
-    float: right;
-    background-color: blue; 
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-    
-}
-*/

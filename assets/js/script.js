@@ -23,7 +23,7 @@ var enemyImages = [[
     "assets/images/corvette/Attack_1_3.png",
     "assets/images/corvette/Attack_1_4.png"]
 ] ;
-var widthOfCanvas = Math.floor(window.innerWidth* 0.4);//landscape 0.7
+var widthOfCanvas = Math.floor(window.innerWidth);//landscape 0.7
 
 let portrait = window.matchMedia("(orientation: portrait)");
 
@@ -46,10 +46,10 @@ portrait.addEventListener("change", function(e) {
 function runGame(){
    
     if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){
-        
+        widthOfCanvas = Math.floor(window.innerWidth* 0.4);
         myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");//-55
     }else{
-        
+        widthOfCanvas = Math.floor(window.innerWidth);
         myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");
     }
     enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[0],0, "image_enemy");
@@ -82,7 +82,13 @@ function runGame(){
 
     //see if need to scale images for mobile or tablet                                      //digout https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
     if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
-        document.getElementById("play-contianer").style.display= "block";
+        //document.getElementById("play-contianer").style.display= "block";
+        
+        widthOfCanvas = Math.floor(window.innerWidth* 0.4);
+        document.getElementById("left").style.display= "block";
+        document.getElementById("right").style.display= "block";
+
+
         myGamePiece.width = Math.floor(myGamePiece.width * 0.3),
         myGamePiece.height =  Math.floor(myGamePiece.height * 0.3)
         for(let enemy of enemies){
