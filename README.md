@@ -192,7 +192,7 @@ https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas
 
 Awesome laser sound: https://pixabay.com/sound-effects/search/laser/
 sound track background: https://cdn.pixabay.com/
-
+YouTube Space Invaders tutorial: https://www.youtube.com/watch?v=MCVU0w73uKI
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>

@@ -267,6 +267,7 @@ function component(width, height, image_url, x, y, type) {
             if(item.y > window.innerHeight){
                 item.x =  Math.floor(Math.random() * window.innerWidth);
                 item.y = 0;
+                myGameArea.frameNo = 0;
             }
         }
     }
