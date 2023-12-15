@@ -1,8 +1,8 @@
 /* --------- Global style */
 *{
     margin: 0;
-    width: 100vw;
-    height: 100vh;
+    /*width: 100vw;
+    height: 100vh;*/
     background-color:black;
 }
 body {
@@ -15,19 +15,23 @@ body {
 
 #container{
     font-size: 2rem;
-    margin: 20%;
+    margin: 10%;
     border: 1px solid #4CAF50;
     background-color:lightgreen;
     padding-bottom: 100px;
 }
 
+#score-value{
+    color: white;
+}
 button{
     background-color: lightblue;   
 }
 
 #play-contianer{
     overflow: auto;
-  
+  /*width: 100vw;
+    height: 100vh;*/
     display: none;
 }
 

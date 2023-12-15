@@ -18,8 +18,11 @@ var enemyBullets = [];
  *
  */
 function runGame(){
-    myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-55, "image_defender");
-
+    if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){
+        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-55, "image_defender");
+    }else{
+        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-120, "image_defender");
+    }
     enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[0],0, "image_enemy");
     enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[1],0, "image_enemy");
 
@@ -78,6 +81,7 @@ var myGameArea = {
             e.preventDefault();
             myGameArea.keys = (myGameArea.keys || []);
             myGameArea.keys[e.keyCode] = (e.type == "keydown");
+            console.log("key:"+e.key);
            
         })
         window.addEventListener('keyup', function (e) {
@@ -184,7 +188,7 @@ function component(width, height, image_url, x, y, type) {
                     this.x, 
                     this.y,
                     this.width, this.height);
-            }else if(type == "image_shot"){
+            }else if(type == "image_shot"){//garbage collection removing off screen bullets
                 let index = 0;
                 for(let shot of bullets){
                     if(shot.x === this.x && shot.y == this.y){
@@ -261,6 +265,10 @@ function updateGameArea() {
                 enemies.splice(index, 1);
                 bullets.splice(shot_index,1);
                 console.log("shot_index"+shot_index);
+                let currentScore = parseInt(document.getElementById("score-value").innerHTML);
+                currentScore += 100;
+                document.getElementById("score-value").innerHTML = currentScore;
+                console.log("score"+currentScore);
             } 
             index++;
         }
