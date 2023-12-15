@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", function(){
 var myGamePiece;
 
 var enemies = [];
-var enemyInitialPositions = [ 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+var enemyInitialPositions = [ 50, 150, 250, 350, 450, 550, 650, 750, 850, 950];
 var bullets = [];
 var enemyBullets = [];
 var enemyImages = [[
-    "assets/images/corvette/Move_1_1.png",
+    "assets/images/corvette/Move_1_1.png",//move
     "assets/images/corvette/Move_1_2.png",
     "assets/images/corvette/Move_1_3.png"],
     [
-    "assets/images/corvette/Attack_1_1.png",
+    "assets/images/corvette/Attack_1_1.png",//shoot
     "assets/images/corvette/Attack_1_2.png",
     "assets/images/corvette/Attack_1_3.png",
     "assets/images/corvette/Attack_1_4.png"]
@@ -48,6 +48,7 @@ function runGame(){
     enemy9Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[8],0, "image_enemy");
     enemy10Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[9],0, "image_enemy");
 
+    console.log("innerHeight:"+window.innerHeight);
 
     enemies.push(enemy1Piece);
     enemies.push(enemy2Piece);
@@ -100,7 +101,6 @@ var myGameArea = {
             myGamePiece.speedX = 0;
             myGamePiece.speedY = 0;
 
-           // if(e.key == ' '){console.log("space pressed");}
             if(e.key == ' ') {//spacebar
                 let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
                 shot.speedY = +10;
@@ -109,17 +109,13 @@ var myGameArea = {
             }
         })
         document.getElementById("left-button").addEventListener("click",function(){
-            /*if(myGamePiece.x > myGamePiece.width ){
-                moveleft();
-            }  */
+            
             if((myGamePiece.x) > (myGamePiece.width/2 - 5)){
                 moveleft();
             }
         });
         document.getElementById("right-button").addEventListener("click",function(){
-            /*if(( myGamePiece.x+myGamePiece.width) < (window.innerWidth-myGamePiece.width)){
-                moveright();
-            }*/
+            
             if((myGamePiece.x + (myGamePiece.width/2)) < (window.innerWidth - (myGamePiece.width/2) + 5)){
                 moveright();
             }
@@ -142,6 +138,8 @@ var myGameArea = {
     },
     stop : function() {
         clearInterval(this.interval);
+        window.location = "end_game_page.html?"+parseInt(document.getElementById('score-value').innerHTML);
+
     },
     update : function(){//update the frame number which is used for to deter if enemy needs to shoot
         this.frameNo++;
@@ -180,6 +178,7 @@ function component(width, height, image_url, x, y, type) {
         this.image.src = image_url;
     
     }
+    this.health = 10;
     this.state = 0;//moving
     this.maxImageCtr = 0;
     this.imageCtr = 0;
@@ -193,17 +192,18 @@ function component(width, height, image_url, x, y, type) {
     this.update = function() {
         switch(this.state){
             case 0://moving
-            maxImageCtr = 2;
+                maxImageCtr = 2;
                 break;
             case 1://shooting
                 maxImageCtr = 3;
                 break;
         }
+        
         if(this.imageCtr < maxImageCtr){
             this.imageCtr++;
-            console.log("imagweCtr:"+this.imageCtr);
+            console.log("imageCtr:"+this.imageCtr);
            }else{
-            this.state=0;//back to moving
+            this.state=0;//back to moving state
             this.imageCtr = 0;
            }
         ctx = myGameArea.context;
@@ -220,27 +220,27 @@ function component(width, height, image_url, x, y, type) {
         } else if(type == "image_enemy"){ 
             this.image.src = enemyImages[this.state][this.imageCtr];
 
-
             ctx.drawImage(this.image, 
                 this.x, 
                 this.y,
                 this.width, this.height);
+
         }else if(type == 'image_shot'){
             if(this.y > 0){//for shots checks if the y position is off the screen
                 ctx.drawImage(this.image, 
                     this.x, 
                     this.y,
                     this.width, this.height);
-            }else if(type == "image_shot"){//garbage collection removing off screen bullets
-                let index = 0;
-                for(let shot of bullets){
-                    if(shot.x === this.x && shot.y == this.y){
-                        bullets.splice(index,1);
-                        console.log("removing bullet:"+index);
-                    }
-                    index++;
-                } 
-            }
+                }else {//garbage collection removing off screen bullets
+                    let index = 0;
+                    for(let shot of bullets){
+                        if(shot.x === this.x && shot.y == this.y){
+                            bullets.splice(index,1);
+                            console.log("removing bullet:"+index);
+                        }
+                        index++;
+                     }    
+                }
         }else {
             ctx.fillStyle = blue;
             ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -302,7 +302,12 @@ function updateGameArea() {
         for(let enemy of enemies){
             
             if (enemy.collisionDetection(shot)) {
-                enemies.splice(index, 1);
+                enemy.health--;
+
+                if(enemy.health == 0){
+                    enemies.splice(index, 1);
+                }
+
                 bullets.splice(shot_index,1);
                 console.log("shot_index"+shot_index);
                 let currentScore = parseInt(document.getElementById("score-value").innerHTML);
@@ -316,8 +321,8 @@ function updateGameArea() {
     }
 
     let enemy_shot_index = 0;
-    for(let shot of enemyBullets){
-        if(myGamePiece.collisionDetection(shot)){
+    for(let eshot of enemyBullets){
+        if(myGamePiece.collisionDetection(eshot)){
             enemyBullets.splice(enemy_shot_index,1);
             myGameArea.stop(); 
         }
@@ -336,12 +341,7 @@ function updateGameArea() {
 
     console.log("frameNo:"+myGameArea.frameNo);
     console.log("enemies.lenth:"+numberEnemies);
-    /*
-    if(myGameArea.frameNo  % 100 == 0 && numberEnemies > 0){
-        enemyShoots();
-    }
-    */
-
+   
     // tests for input
     if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }//ArrowLeft
     if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }//ArrowRight
@@ -394,10 +394,10 @@ function enemyShoots(shooter){
     enemyBullets.push(eShot);
     
 }
-
+/*
 function updateImg(enemy,shooterImg){
     enemy.Image.src = shooterImg;
-}
+}*/
 
 function moveleft() {
     myGamePiece.speedX = -5; 

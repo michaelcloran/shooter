@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooter</title>
+</head>
+<body>
+    <h1>You have reached the end of the game</h1>
+
+    <script>
+        var link = window.location.href;
+        link=link.substring(link.indexOf("?")+1,link.length);
+        document.write("Your Score was:"+link+"");
+    </script>
+</body>
+</html>
