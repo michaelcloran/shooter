@@ -130,11 +130,15 @@ var myGameArea = {
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
+            playLaser();
+               
         });
         document.getElementById("button-shoot-left").addEventListener("click",function(){
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
+            playLaser();
+               
         });
 
 
