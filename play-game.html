@@ -13,6 +13,10 @@
         <source src="assets/sounds/sound-track.mp3" type="audio/mpeg">
         Your browser does not support audio.
     </audio>
+    <audio id="laserSound">
+        <source src="assets/sounds/laser.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
     <div>
         <p><span>Score:</span><san id="score-value">0</san></p>
         <button type="button" onclick="playAudio()">Play Sound</button>
@@ -27,6 +31,7 @@
     </div>
     <script>
         var x = document.getElementById("gameAudio"); 
+        var laserSound = "assets/sounds/laser.mp3";
         
         function playAudio() { 
           x.play(); 

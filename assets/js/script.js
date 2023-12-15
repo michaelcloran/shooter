@@ -1,15 +1,9 @@
 //to make sure the site is loaded
 document.addEventListener("DOMContentLoaded", function(){
-  
-    var x =document.getElementById("gameAudio");
-    //x.play();
-    runGame();
-
+  runGame();
 });
 
-function playAudio(){
-    x.play();
-}
+
 /**
  * Globals
  */
@@ -29,6 +23,7 @@ var enemyImages = [[
     "assets/images/corvette/Attack_1_3.png",
     "assets/images/corvette/Attack_1_4.png"]
 ] ;
+
 
 
 /**
@@ -110,10 +105,12 @@ var myGameArea = {
             myGamePiece.speedX = 0;
             myGamePiece.speedY = 0;
 
-            if(e.key == ' ') {//spacebar
+            if(e.key == ' ' ) {//spacebar
                 let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
                 shot.speedY = +10;
                 bullets.push(shot);
+                playLaser();
+               
                 
             }
         })
@@ -421,3 +418,8 @@ function moveright() {
     myGamePiece.newPos();
     myGamePiece.update();
 }
+
+function playLaser() { 
+    const audio = new Audio(laserSound);
+    audio.play();
+} 
