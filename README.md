@@ -184,7 +184,7 @@ from dropdown choose main and root and clicked on save.
 
 
 ## Credits
-W3schools.com
+W3schools.com: https://www.w3schools.com/graphics/game_intro.asp
 Balsamiq
 
 resize of images with canvas context

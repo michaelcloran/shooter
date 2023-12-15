@@ -149,7 +149,6 @@ var myGameArea = {
     stop : function() {
         clearInterval(this.interval);
         window.location = "end_game_page.html?"+parseInt(document.getElementById('score-value').innerHTML);
-
     },
     update : function(){//update the frame number which is used for to deter if enemy needs to shoot
         this.frameNo++;
@@ -189,7 +188,7 @@ function component(width, height, image_url, x, y, type) {
     
     }
     this.health = 10;
-    this.state = 0;//moving
+    this.state = 0;//moving state
     this.maxImageCtr = 0;
     this.imageCtr = 0;
     this.width = width;
@@ -201,10 +200,10 @@ function component(width, height, image_url, x, y, type) {
     
     this.update = function() {
         switch(this.state){
-            case 0://moving
+            case 0://moving state
                 maxImageCtr = 2;
                 break;
-            case 1://shooting
+            case 1://shooting state
                 maxImageCtr = 3;
                 break;
         }
@@ -368,12 +367,12 @@ function updateGameArea() {
         
     myGamePiece.update();
 
-//updates every enemy
-for(let item of enemies){
-    item.speedY = -1;
-    item.newPos();
-    item.update();
-}  
+    //updates every enemy
+    for(let item of enemies){
+        item.speedY = -1;
+        item.newPos();
+        item.update();
+    }  
 
     //updates every shot
     for(let shot of bullets){
@@ -381,20 +380,22 @@ for(let item of enemies){
         shot.update();
     }
 
-//update enemy bullets/shots
-let sIndex = 0;
-for(let eShot of enemyBullets){      
-        
-    eShot.newPos();
-    eShot.update();
-    if(eShot.y >= window.innerHeight){
-        enemyBullets.splice(sIndex,1);
-        console.log("garbage Collection:"+sIndex);
-    }
-    sIndex++;
-}
-
+    //update enemy bullets/shots
+    let sIndex = 0;
+    for(let eShot of enemyBullets){      
+            
+        eShot.newPos();
+        eShot.update();
+        if(eShot.y >= window.innerHeight){
+            enemyBullets.splice(sIndex,1);
+            console.log("garbage Collection:"+sIndex);
+        }
+        sIndex++;
+    } 
     
+    if(enemies.length == 0){//Game over you killed all enemies
+        myGameArea.stop();
+    }
 }
 
 function enemyShoots(shooter){
@@ -406,10 +407,6 @@ function enemyShoots(shooter){
     playEnemyLaser();
     
 }
-/*
-function updateImg(enemy,shooterImg){
-    enemy.Image.src = shooterImg;
-}*/
 
 function moveleft() {
     myGamePiece.speedX = -5; 

@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shooter</title>
 </head>
-<body>
-    <h1>You have reached the end of the game</h1>
+<body onload="playGameOverSound()">
+    <h1>Game Over</h1>
+    <h2>Congratulations on getting this far!!</h2>
 
     <script>
+        var gameOverSound = "assets/sounds/game-over.mp3";
+
         var link = window.location.href;
         link=link.substring(link.indexOf("?")+1,link.length);
         document.write("Your Score was:"+link+"");
+
+        function playGameOverSound(){
+            const audio = new Audio(gameOverSound);
+            audio.play();
+        }
     </script>
 </body>
 </html>
