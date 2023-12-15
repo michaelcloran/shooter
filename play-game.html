@@ -13,6 +13,10 @@
     <title>Shooter</title>
 </head>
 <body >
+    <audio id="gameAudio">
+        <source src="assets/sounds/sound-track.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     <div>
         <p><span>Score:</span><san id="score-value">0</san></p>
         <button type="button" onclick="playAudio()">Play Sound</button>
@@ -26,17 +30,17 @@
         <button type="button" id="right-button">RIGHT</button> 
     </div>
     <script>
-        var x = document.getElementById("gameAudio"); 
+        var soundTrack = document.getElementById("gameAudio"); 
         var laserSound = "assets/sounds/laser.mp3";
         var enemyLaserSound = "assets/sounds/enemy-laser.mp3";
         
         
         function playAudio() { 
-          x.play(); 
+            soundTrack.play(); 
         } 
         
         function pauseAudio() { 
-          x.pause(); 
+            soundTrack.pause(); 
         } 
         </script>
     <script src="assets/js/script.js"></script>
