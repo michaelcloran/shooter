@@ -63,8 +63,31 @@ body {
   /*  display: none;*/
 }
 
+#left{
+    
+    height:100vh;
+   }
+   #right{
+   
 
-#button-shoot-left {
+   height: 100vh;
+   
+   }
+   #center{
+   background-color:lightblue;
+   
+   height:100vh;
+   }
+
+#left-button, #right-button{
+    height:100vh;
+   }
+   #left-shoot-button, #right-shoot-button{
+    height: 100vh;
+    background-color:red;
+   }
+
+/*#button-shoot-left {
     float:left;
     background-color: red; 
     border: none;
@@ -114,3 +137,4 @@ body {
   font-size: 16px;
     
 }
+*/

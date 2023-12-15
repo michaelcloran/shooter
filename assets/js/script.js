@@ -23,8 +23,21 @@ var enemyImages = [[
     "assets/images/corvette/Attack_1_3.png",
     "assets/images/corvette/Attack_1_4.png"]
 ] ;
+var widthOfCanvas = Math.floor(window.innerWidth* 0.4);//landscape 0.7
 
+let portrait = window.matchMedia("(orientation: portrait)");
 
+portrait.addEventListener("change", function(e) {
+    if(e.matches) {
+        // Portrait mode
+        console.log("portrait:"+window.innerWidth);
+        if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.4);
+    } else {
+        // Landscape
+        console.log("landscape:"+window.innerWidth);
+        if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.7);
+    }
+})
 
 /**
  * the main game "loop", called when the script is first loaded
@@ -33,9 +46,11 @@ var enemyImages = [[
 function runGame(){
    
     if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){
-        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-120, "image_defender");//-55
+        
+        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");//-55
     }else{
-        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", window.innerWidth/2,window.innerHeight-120, "image_defender");
+        
+        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");
     }
     enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[0],0, "image_enemy");
     enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[1],0, "image_enemy");
@@ -83,12 +98,12 @@ function runGame(){
  * setsup the game area with event listeners for keyup and keydown
  */
 var myGameArea = {
-    canvas : document.createElement("canvas"),
+    canvas : document.getElementById("myCanvas"),
     start : function() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight-100;
+        this.canvas.width =  widthOfCanvas;
+        this.canvas.height =window.innerHeight-100;// -100;
         this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        //document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
 
@@ -122,18 +137,18 @@ var myGameArea = {
         });
         document.getElementById("right-button").addEventListener("click",function(){
             
-            if((myGamePiece.x + (myGamePiece.width/2)) < (window.innerWidth - (myGamePiece.width/2) + 5)){
+            if((myGamePiece.x + (myGamePiece.width/2)) < (widthOfCanvas - (myGamePiece.width/2) + 5)){
                 moveright();
             }
         });
-        document.getElementById("button-shoot-right").addEventListener("click",function(){
+        document.getElementById("right-shoot-button").addEventListener("click",function(){
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
             playLaser();
                
         });
-        document.getElementById("button-shoot-left").addEventListener("click",function(){
+        document.getElementById("left-shoot-button").addEventListener("click",function(){
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
@@ -264,7 +279,7 @@ function component(width, height, image_url, x, y, type) {
         let i = 0;
         for(let item of enemies){
             if(item.y > window.innerHeight){
-                item.x =  Math.floor(Math.random() * window.innerWidth);
+                item.x =  Math.floor(Math.random() * widthOfCanvas);
                 item.y = 0;
                 myGameArea.frameNo = 0;
             }
@@ -362,7 +377,7 @@ function updateGameArea() {
     //updates myGamePiece()
     if(myGamePiece.speedX == -5 && (myGamePiece.x) > (myGamePiece.width/2 - 5) ){//left
         myGamePiece.newPos();
-    }else if(myGamePiece.speedX == 5 && ((myGamePiece.x + (myGamePiece.width/2)) < (window.innerWidth - (myGamePiece.width/2) + 5))){//right
+    }else if(myGamePiece.speedX == 5 && ((myGamePiece.x + (myGamePiece.width/2)) < (widthOfCanvas - (myGamePiece.width/2) + 5))){//right
         myGamePiece.newPos();
     }
         

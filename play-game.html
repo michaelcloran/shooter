@@ -23,12 +23,21 @@
         <button type="button" id="pauseSoundTrack"onclick="pauseAudio()">Pause Sound</button>
     </div>
     <div id="play-contianer">
-        <button type="button" id="button-shoot-left" >shoot</button> <br>
-        <button type="button" id="left-button">LEFT</button>           
-        
-        <button type="button" id="button-shoot-right" style="float: right;">shoot</button> <br>
-        <button type="button" id="right-button">RIGHT</button> 
+        <div style="display: flex; justify-content: space-around">
+            <section id="left">
+                <button type="button" id="left-button">Left</button>
+                <button type="button" id="left-shoot-button">shoot</button>
+            </section>
+            <section id="center">
+                <canvas id="myCanvas" ></canvas>
+            </section>
+            <section id="right">
+                <button type="button" id="right-shoot-button">shoot</button>
+                <button type="button" id="right-button">Right</button>
+            </section>
+        </div>
     </div>
+
     <script>
         var soundTrack = document.getElementById("gameAudio"); 
         var laserSound = "assets/sounds/laser.mp3";
