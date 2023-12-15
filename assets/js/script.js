@@ -316,6 +316,7 @@ function updateGameArea() {
 
                 if(enemy.health == 0){
                     enemies.splice(index, 1);
+                    playExposion();
                 }
 
                 bullets.splice(shot_index,1);
@@ -429,5 +430,10 @@ function playLaser() {
 
 function playEnemyLaser() { 
     const audio = new Audio(enemyLaserSound);
+    audio.play();
+} 
+
+function playExposion() { 
+    const audio = new Audio(explosionSound);
     audio.play();
 } 
