@@ -32,13 +32,13 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
         // Portrait mode
         console.log("portrait:"+window.innerWidth);
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.4
-        myGamePiece.y = window.innerHeight -120;//55
+        myGamePiece.y = window.innerHeight -30;//55
 
     } else {
         // Landscape
         console.log("landscape:"+window.innerWidth);
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.7
-        myGamePiece.y = window.innerHeight -20;//55
+        myGamePiece.y = window.innerHeight -30;//55
     }
 })
 
@@ -48,9 +48,9 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
  */
 function runGame(){
    
-    if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){
+    if(window.innerWidth < 1050 || window.screen.orientation == 90 || window.screen.orientation === -90){
         widthOfCanvas = Math.floor(window.innerWidth* 0.8);
-        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");//-55
+        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-100, "image_defender");//-55
     }else{
         widthOfCanvas = Math.floor(window.innerWidth);
         myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");
@@ -84,17 +84,17 @@ function runGame(){
     enemies.push(enemy10Piece);
 
     //see if need to scale images for mobile or tablet                                      //digout https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
-    if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
+    if(window.innerWidth < 1050 || window.screen.orientation == 90 || window.screen.orientation === -90){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
         widthOfCanvas = Math.floor(window.innerWidth* 0.8);//portrait on mobile
         document.getElementById("left").style.display= "block";//need left and right buttons for mobiles
         document.getElementById("right").style.display= "block";
 
-       if(window.matchMedia("(orientation: landscape)".matches)){//not working correctly
-            console.log("landscape");
+       if(window.matchMedia("(orientation: landscape)").matches){//not working correctly
+            console.log("landscape in playgame");
             document.getElementById("playSoundTrack").style.display = "none";
             document.getElementById("pauseSoundTrack").style.display = "none";
             playAudio();
-            myGamePiece.y = window.innerHeight-20;//landscape only
+            myGamePiece.y = window.innerHeight-30;//landscape only
         }
 
 
@@ -119,7 +119,7 @@ var myGameArea = {
         if(window.matchMedia("(orientation: landscape)").matches){
             this.canvas.height =window.innerHeight;// -100;
         }else{
-            this.canvas.height =window.innerHeight-100;// -100;
+            this.canvas.height =window.innerHeight;// -100;
         }
         this.context = this.canvas.getContext("2d");
         this.frameNo = 0;
