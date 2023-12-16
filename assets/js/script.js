@@ -36,6 +36,7 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
         // Landscape
         console.log("landscape:"+window.innerWidth);
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.7);
+        myGamePiece.y = window.innerHeight -55;
     }
 })
 
@@ -86,6 +87,15 @@ function runGame(){
         document.getElementById("left").style.display= "block";//need left and right buttons for mobiles
         document.getElementById("right").style.display= "block";
 
+        if(window.matchMedia("(orientation: landscape)")){
+            console.log("landscape");
+            document.getElementById("playSoundTrack").style.display = "none";
+            document.getElementById("pauseSoundTrack").style.display = "none";
+            playAudio();
+            myGamePiece.y = window.innerHeight -55;
+        }
+
+
         myGamePiece.width = Math.floor(myGamePiece.width * 0.3),
         myGamePiece.height =  Math.floor(myGamePiece.height * 0.3)
         for(let enemy of enemies){
@@ -104,7 +114,11 @@ var myGameArea = {
     canvas : document.getElementById("myCanvas"),
     start : function() {
         this.canvas.width =  widthOfCanvas;
-        this.canvas.height =window.innerHeight-100;// -100;
+        if(window.matchMedia("(orientation: landscape)")){
+            this.canvas.height =window.innerHeight-20;// -100;
+        }else{
+            this.canvas.height =window.innerHeight-100;// -100;
+        }
         this.context = this.canvas.getContext("2d");
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
