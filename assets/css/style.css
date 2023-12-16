@@ -64,12 +64,12 @@ body {
 }
 
 #left{
-    height:100vh;
+    height:30vh;
     display:none;
 }
 
 #right{
-   height: 100vh;
+   height: 30vh;
    display:none;
 }
 
@@ -79,10 +79,10 @@ body {
 }
 
 #left-button, #right-button{
-    height:100vh;
+    height:30vh;
 }
 
 #left-shoot-button, #right-shoot-button{
-    height: 100vh;
+    height: 30vh;
     background-color:red;
 }

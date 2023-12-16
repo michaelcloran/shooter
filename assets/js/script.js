@@ -27,7 +27,7 @@ var widthOfCanvas = Math.floor(window.innerWidth);//landscape 0.7
 
 let portrait = window.matchMedia("(orientation: portrait)");
 
-portrait.addEventListener("change", function(e) {
+portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/how-to-detect-device-orientation-with-javascript-29e5
     if(e.matches) {
         // Portrait mode
         console.log("portrait:"+window.innerWidth);
@@ -82,12 +82,9 @@ function runGame(){
 
     //see if need to scale images for mobile or tablet                                      //digout https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
     if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
-        //document.getElementById("play-contianer").style.display= "block";
-        
-        widthOfCanvas = Math.floor(window.innerWidth* 0.4);
-        document.getElementById("left").style.display= "block";
+        widthOfCanvas = Math.floor(window.innerWidth* 0.4);//portrait on mobile
+        document.getElementById("left").style.display= "block";//need left and right buttons for mobiles
         document.getElementById("right").style.display= "block";
-
 
         myGamePiece.width = Math.floor(myGamePiece.width * 0.3),
         myGamePiece.height =  Math.floor(myGamePiece.height * 0.3)
@@ -109,7 +106,6 @@ var myGameArea = {
         this.canvas.width =  widthOfCanvas;
         this.canvas.height =window.innerHeight-100;// -100;
         this.context = this.canvas.getContext("2d");
-        //document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
 
