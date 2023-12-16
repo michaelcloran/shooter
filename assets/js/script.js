@@ -83,13 +83,13 @@ function runGame(){
     enemies.push(enemy9Piece);
     enemies.push(enemy10Piece);
 
-    //see if need to scale images for mobile or tablet                                      //digout https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
+    //see if need to scale images for mobile or tablet                                      
     if(window.innerWidth < 1050 || window.screen.orientation == 90 || window.screen.orientation === -90){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
         widthOfCanvas = Math.floor(window.innerWidth* 0.8);//portrait on mobile
         document.getElementById("left").style.display= "block";//need left and right buttons for mobiles
         document.getElementById("right").style.display= "block";
 
-       if(window.matchMedia("(orientation: landscape)").matches){//not working correctly
+       if(window.matchMedia("(orientation: landscape)").matches){//digout: https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
             console.log("landscape in playgame");
             document.getElementById("playSoundTrack").style.display = "none";
             document.getElementById("pauseSoundTrack").style.display = "none";
