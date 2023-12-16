@@ -80,6 +80,7 @@ body {
 
 #left-button, #right-button{
     height:30vh;
+    background-color: blue;
 }
 
 #left-shoot-button, #right-shoot-button{

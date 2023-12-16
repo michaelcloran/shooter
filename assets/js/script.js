@@ -31,12 +31,12 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
     if(e.matches) {
         // Portrait mode
         console.log("portrait:"+window.innerWidth);
-        if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.4);
+        if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.4
     } else {
         // Landscape
         console.log("landscape:"+window.innerWidth);
-        if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.7);
-        myGamePiece.y = window.innerHeight -55;
+        if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.7
+        myGamePiece.y = window.innerHeight -20;//55
     }
 })
 
@@ -47,7 +47,7 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
 function runGame(){
    
     if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){
-        widthOfCanvas = Math.floor(window.innerWidth* 0.4);
+        widthOfCanvas = Math.floor(window.innerWidth* 0.8);
         myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");//-55
     }else{
         widthOfCanvas = Math.floor(window.innerWidth);
@@ -83,16 +83,16 @@ function runGame(){
 
     //see if need to scale images for mobile or tablet                                      //digout https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
     if(window.innerWidth < 1000 || window.screen.orientation == 90 || window.screen.orientation === -90){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
-        widthOfCanvas = Math.floor(window.innerWidth* 0.4);//portrait on mobile
+        widthOfCanvas = Math.floor(window.innerWidth* 0.8);//portrait on mobile
         document.getElementById("left").style.display= "block";//need left and right buttons for mobiles
         document.getElementById("right").style.display= "block";
 
-        if(window.matchMedia("(orientation: landscape)")){
+       if(window.matchMedia("(orientation: landscape)".matches)){//not working correctly
             console.log("landscape");
             document.getElementById("playSoundTrack").style.display = "none";
             document.getElementById("pauseSoundTrack").style.display = "none";
             playAudio();
-            myGamePiece.y = window.innerHeight -55;
+            myGamePiece.y = window.innerHeight-20;//landscape only
         }
 
 
@@ -114,8 +114,8 @@ var myGameArea = {
     canvas : document.getElementById("myCanvas"),
     start : function() {
         this.canvas.width =  widthOfCanvas;
-        if(window.matchMedia("(orientation: landscape)")){
-            this.canvas.height =window.innerHeight-20;// -100;
+        if(window.matchMedia("(orientation: landscape)").matches){
+            this.canvas.height =window.innerHeight;// -100;
         }else{
             this.canvas.height =window.innerHeight-100;// -100;
         }
