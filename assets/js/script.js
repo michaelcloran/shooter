@@ -32,6 +32,8 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
         // Portrait mode
         console.log("portrait:"+window.innerWidth);
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.4
+        myGamePiece.y = window.innerHeight -120;//55
+
     } else {
         // Landscape
         console.log("landscape:"+window.innerWidth);
