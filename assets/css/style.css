@@ -26,6 +26,7 @@ body {
     color: orange;
 }
 #container p.some-text{
+    overflow:auto;
     
     background-color: blue;
     color:orange;
@@ -35,12 +36,23 @@ body {
     font-size: 1rem;
     top:220px;
     left: 40px;
+    
 }
 
 #score-value{
     color: white;
 }
-#playGame, #playSoundTrack, #pauseSoundTrack{
+
+#playGame{
+    padding: 20px;
+    margin:40px;
+    border-style: solid;
+    border-width: 20px, 5px;
+    border-color: orange;
+    background-color: lightskyblue; 
+}
+
+#playSoundTrack, #pauseSoundTrack{
     padding: 20px;
    /* margin:40px;*/
     border-style: solid;

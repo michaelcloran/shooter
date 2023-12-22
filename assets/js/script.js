@@ -220,7 +220,7 @@ function component(width, height, image_url, x, y, type) {
         this.image.src = image_url;
     
     }
-    this.health = 10;
+    this.health = 2;
     this.state = 0;//moving state
     this.maxImageCtr = 0;
     this.imageCtr = 0;
