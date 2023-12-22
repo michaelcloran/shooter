@@ -25,17 +25,18 @@ body {
     text-align: center;
     color: orange;
 }
-#container p.some-text{
+
+p.some-text{
     overflow:auto;
-    
+    padding:10px;
     background-color: blue;
     color:orange;
-    width: 80vw;
+    width: 85vw;
     text-align:center;
     position:fixed;
     font-size: 1rem;
     top:220px;
-    left: 40px;
+    left: 5vw;
     
 }
 
@@ -89,4 +90,21 @@ body {
 #left-shoot-button, #right-shoot-button{
     height: 30vh;
     background-color:red;
+}
+/* media query: laptops and larger (992px and up) */
+@media screen and (min-width: 992px) {
+    p.some-text{
+        overflow:auto;
+        margin:10px;
+        background-color: blue;
+        color:orange;
+        
+        width: 60vw;
+        text-align:center;
+        position:fixed;
+        font-size: 2rem;
+        top:220px;
+        left: 20vw;
+        
+    }
 }
