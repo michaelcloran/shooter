@@ -30,13 +30,11 @@ let portrait = window.matchMedia("(orientation: portrait)");
 portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/how-to-detect-device-orientation-with-javascript-29e5
     if(e.matches) {
         // Portrait mode
-        console.log("portrait:"+window.innerWidth);
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.4
         myGamePiece.y = window.innerHeight -30;//55
 
     } else {
         // Landscape
-        console.log("landscape:"+window.innerWidth);
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.7
         myGamePiece.y = window.innerHeight -30;//55
     }
@@ -70,8 +68,6 @@ function runGame(){
     enemy9Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[8],0, "image_enemy");
     enemy10Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[9],0, "image_enemy");
 
-    console.log("innerHeight:"+window.innerHeight);
-
     enemies.push(enemy1Piece);
     enemies.push(enemy2Piece);
     enemies.push(enemy3Piece);
@@ -90,7 +86,6 @@ function runGame(){
         document.getElementById("right").style.display= "block";
 
        if(window.matchMedia("(orientation: landscape)").matches){//digout: https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
-            console.log("landscape in playgame");
             document.getElementById("playSoundTrack").style.display = "none";
             document.getElementById("pauseSoundTrack").style.display = "none";
             playAudio();
@@ -129,7 +124,6 @@ var myGameArea = {
             e.preventDefault();
             myGameArea.keys = (myGameArea.keys || []);
             myGameArea.keys[e.keyCode] = (e.type == "keydown");
-            console.log("key:"+e.key);
            
         })
         window.addEventListener('keyup', function (e) {
@@ -185,7 +179,6 @@ var myGameArea = {
     },
     update : function(){//update the frame number which is used for to deter if enemy needs to shoot
         this.frameNo++;
-        console.log("Frame:"+this.frameNo);
         if(myGameArea.frameNo  % 100 == 0 && numberEnemies > 0){
             let randomEnemy = getRandomEnemy(enemies);
             let shooter = enemies[randomEnemy];
@@ -243,7 +236,6 @@ function component(width, height, image_url, x, y, type) {
         
         if(this.imageCtr < maxImageCtr){
             this.imageCtr++;
-            console.log("imageCtr:"+this.imageCtr);
            }else{
             this.state=0;//back to moving state
             this.imageCtr = 0;
@@ -278,7 +270,6 @@ function component(width, height, image_url, x, y, type) {
                     for(let shot of bullets){
                         if(shot.x === this.x && shot.y == this.y){
                             bullets.splice(index,1);
-                            console.log("removing bullet:"+index);
                         }
                         index++;
                      }    
@@ -322,7 +313,6 @@ function component(width, height, image_url, x, y, type) {
 
 function getRandomEnemy(enemies){
     let randomeEnemyIndex = Math.floor(Math.random() * enemies.length);
-    console.log("randomeEnemyIndex:"+randomeEnemyIndex);
     if(randomeEnemyIndex < enemies.length){
         return randomeEnemyIndex;    
     }
@@ -353,11 +343,9 @@ function updateGameArea() {
                 }
 
                 bullets.splice(shot_index,1);
-                console.log("shot_index"+shot_index);
                 let currentScore = parseInt(document.getElementById("score-value").innerHTML);
                 currentScore += 100;
                 document.getElementById("score-value").innerHTML = currentScore;
-                console.log("score"+currentScore);
             } 
             index++;
         }
@@ -378,14 +366,10 @@ function updateGameArea() {
     myGamePiece.moveAngle = 0;
     myGamePiece.speed = 0;
 
-    console.log("enemies L:"+enemies.length);
     numberEnemies = enemies.length;
 
     myGameArea.update();//update the frame Number
 
-    console.log("frameNo:"+myGameArea.frameNo);
-    console.log("enemies.lenth:"+numberEnemies);
-   
     // tests for input
     if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }//ArrowLeft
     if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }//ArrowRight
@@ -422,7 +406,6 @@ function updateGameArea() {
         eShot.update();
         if(eShot.y >= window.innerHeight){
             enemyBullets.splice(sIndex,1);
-            console.log("garbage Collection:"+sIndex);
         }
         sIndex++;
     } 
@@ -433,7 +416,6 @@ function updateGameArea() {
 }
 
 function enemyShoots(shooter){
-    console.log("shooter.x:"+shooter.x);
     shooter.state = 1;//shooting
     let eShot = new component(28,28,"assets/images/fighter/shot_weapon1.png", shooter.x+shooter.width/2, shooter.y, "image_shot");
     eShot.speedY = -10;

@@ -41,8 +41,8 @@
     - [HTML](#html)<br>
     - [JavaScript](#javascript)<br>
 
--6. [Deployment](#deployment)<br>
--7. [Credits](#credits)<br>
+-6. [Deployment](#6-deployment)<br>
+-7. [Credits](#7-credits)<br>
 
 <hr>
 <p align="right">
@@ -66,7 +66,7 @@ The favicon is a fun icon to show in the browser tabs to quickly identify the Sh
 - The Landing Page<br>
 ![Screenshot](assets/readme_images/landing-page.png)<br>
 
-- The Game Playing Area<br>
+- The Game Playing Area<br>Notice the two buttons play sound and pause sound. These buttons are used to play and stall background music.<br>
 ![Screenshot](assets/readme_images/game-playing-area.png)<br>
 
 - The Game Over Page<br>
@@ -163,7 +163,7 @@ I went to website craftpix.net and done a search for space and found a free imag
     <a href="#top" >Goto Top</a>
 </p>
 
-## Deployment
+## 6. Deployment
 
 For Deployment I setup the project/repo folder shooter on GitHub with template 
 from Code Institute<br>
@@ -215,7 +215,7 @@ from dropdown choose main and root and clicked on save.
 </p>
 
 
-## Credits
+## 7. Credits
 - W3schools.com: https://www.w3schools.com/graphics/game_intro.asp <br>
 I used this tutorial to build the game engine from scratch.
 - Balsamiq<br>
