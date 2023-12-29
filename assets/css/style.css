@@ -12,7 +12,7 @@ body {
 
 #container{
     
-    height: 80vh;
+    /*height: 80vh;*/
     
 }
 
@@ -29,13 +29,14 @@ body {
 p.some-text{
     overflow:auto;
     padding:10px;
+    margin-top: 10px;
     background-color: blue;
     color:orange;
     width: 85vw;
     text-align:center;
     position:fixed;
     font-size: 1rem;
-    top:220px;
+    /*top:220px;*/
     left: 5vw;
     
 }
@@ -46,7 +47,7 @@ p.some-text{
 
 #playGame{
     padding: 20px;
-    margin:40px;
+    margin-top:300px;
     border-style: solid;
     border-width: 20px, 5px;
     border-color: orange;
@@ -96,6 +97,7 @@ p.some-text{
     p.some-text{
         overflow:auto;
         margin:10px;
+        padding-top: 20px;
         background-color: blue;
         color:orange;
         
@@ -103,8 +105,16 @@ p.some-text{
         text-align:center;
         position:fixed;
         font-size: 2rem;
-        top:220px;
+       
         left: 20vw;
         
+    }
+    #playGame{
+        padding: 20px;
+        margin-top:480px;
+        border-style: solid;
+        border-width: 20px, 5px;
+        border-color: orange;
+        background-color: lightskyblue; 
     }
 }
