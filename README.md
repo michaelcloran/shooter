@@ -163,6 +163,22 @@ I went to website craftpix.net and done a search for space and found a free imag
     <a href="#top" >Goto Top</a>
 </p>
 
+## 5. Testing<br>
+- Accessibility<br>
+- Lighthouse testing<br>
+- Desktop<br>
+- Mobile<br>
+- Functional tests<br>
+- Validation of code<br>
+- CSS<br>
+- HTML<br>
+- JavaScript<br>
+
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
+
 ## 6. Deployment
 
 For Deployment I setup the project/repo folder shooter on GitHub with template 
