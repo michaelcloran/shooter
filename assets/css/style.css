@@ -10,12 +10,6 @@ body {
     margin: 0;
 }
 
-#container{
-    
-    /*height: 80vh;*/
-    
-}
-
 #container h1{
    
     background-color:blue;
@@ -35,9 +29,7 @@ body {
     color:orange;
     width: 85vw;
     text-align:center;
-    /*position:fixed;*/
     font-size: 2rem;
-    /*top:220px;*/
     left: 5vw;
     
 }
@@ -52,7 +44,6 @@ p.some-text, .some_text h2{
     text-align:center;
     position:fixed;
     font-size: 1rem;
-    /*top:220px;*/
     left: 5vw;
     
 }
@@ -67,7 +58,6 @@ p.some-text, .some_text h2{
     text-align:center;
     position:fixed;
     font-size: 1rem;
-    /*top:220px;*/
     left: 5vw;
 }
 
@@ -102,11 +92,6 @@ p.some-text, .some_text h2{
     background-color: lightskyblue;   
 }
 
-#play-contianer{
-   
-  /*display: none;*/
-}
-
 #left{
     height:30vh;
     display:none;
@@ -119,7 +104,6 @@ p.some-text, .some_text h2{
 
 #center{
    background-color:lightblue;
-   /*height:100vh;*/
 }
 
 #left-button, #right-button{
@@ -139,14 +123,11 @@ p.some-text, .some_text h2{
         padding-top: 20px;
         background-color: blue;
         color:orange;
-        
         width: 60vw;
         text-align:center;
         position:fixed;
         font-size: 2rem;
-       
         left: 20vw;
-        
     }
     #playGame{
         padding: 20px;
