@@ -2,12 +2,12 @@
 -1. [Shooter Overview](#1-shooter-overview)<br>
 
 -2. [Existing Features](#2-existing-features)<br>
-- [Favicon](#favicon)<br>
-- [The Landing Page](#landing-page)<br>
-- [The Game Playing Area](#the-game-playing-area)<br>
-- [The Game Over Page](#game-over-page")<br>
-- [The 404 Error Page](#404-error-page)<br>
-- [Features left to implement](#features-left-to-implement)<br>
+- Favicon<br>
+- The Landing Page<br>
+- The Game Playing Area<br>
+- The Game Over Page<br>
+- The 404 Error Page<br>
+- Features left to implement<br>
 	
 
 
@@ -30,16 +30,16 @@
 - VSCodium on Ubuntu Linux<br>
 
 
--5. [Testing](#testing)<br>
-   - [Accessibility](#accessibility)<br>
-   - [Lighthouse testing](#lighthouse-testing)<br>
-    - [Desktop](#desktop)<br>
-    - [Mobile](#mobile)<br>
-   - [Functional tests](#functional-tests)<br>
-   - [Validation of code](#validation-of-code)<br>
-    - [CSS](#css)<br>
-    - [HTML](#html)<br>
-    - [JavaScript](#javascript)<br>
+-5. [Testing](#5-testing)<br>
+- Accessibility<br>
+- Lighthouse testing<br>
+- Desktop<br>
+- Mobile<br>
+- Functional tests<br>
+- Validation of code<br>
+- CSS<br>
+- HTML<br>
+- JavaScript<br>
 
 -6. [Deployment](#6-deployment)<br>
 -7. [Credits](#7-credits)<br>
@@ -163,7 +163,7 @@ I went to website craftpix.net and done a search for space and found a free imag
     <a href="#top" >Goto Top</a>
 </p>
 
-## 5. Testing<br>
+## 5. Testing
 - Accessibility<br>
 - Lighthouse testing<br>
 - Desktop<br>
