@@ -1,7 +1,7 @@
 # [Table of contents](#top)<br>
 -1. [Shooter Overview](#1-shooter-overview)<br>
 
--2. [Existing Features](#existing-features)<br>
+-2. [Existing Features](#2-existing-features)<br>
 - [Favicon](#favicon)<br>
 - [The Landing Page](#landing-page)<br>
 - [The Game Playing Area](#the-game-playing-area)<br>
@@ -52,7 +52,30 @@
 
 ## 1. Shooter Overview
 
-This project is about a simple 2D shooter game written in JavaScript with HTML and CSS. Link to online website HERE todo
+This project is about a simple 2D shooter game written in JavaScript with HTML and CSS. Link to online website: https://michaelcloran.github.io/shooter/index.html
+<hr>
+<p align="right">
+    <a href="#top" >Goto Top</a>
+</p>
+
+## 2. Existing Features
+- Favicon<br>
+The favicon is a fun icon to show in the browser tabs to quickly identify the Shooter webpage.<br>
+![Screenshot](assets/readme_images/favicon.png)<br>
+
+- The Landing Page<br>
+![Screenshot](assets/readme_images/landing-page.png)<br>
+
+- The Game Playing Area<br>
+![Screenshot](assets/readme_images/game-playing-area.png)<br>
+
+- The Game Over Page<br>
+![Screenshot](assets/readme_images/game-over-page.png)<br>
+
+- The 404 Error Page<br>
+![Screenshot](assets/readme_images/404_page.png)<br>
+
+- Features left to implement<br>
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>
@@ -191,15 +214,19 @@ from dropdown choose main and root and clicked on save.
 
 
 ## Credits
-W3schools.com: https://www.w3schools.com/graphics/game_intro.asp
-Balsamiq
+- W3schools.com: https://www.w3schools.com/graphics/game_intro.asp <br>
+I used this tutorial to build the game engine from scratch.
+- Balsamiq<br>
+I used Balsamiq to do mockup wireframes.
 
-resize of images with canvas context
+- resize of images with canvas context
 https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly <br>
+I used the above to give me ideas on how to resize the images for mobile and small screen usage.
 
-Awesome laser sound: https://pixabay.com/sound-effects/search/laser/
-sound track background: https://cdn.pixabay.com/
-YouTube Space Invaders tutorial: https://www.youtube.com/watch?v=MCVU0w73uKI
+- Awesome laser sound: https://pixabay.com/sound-effects/search/laser/
+- sound track background: https://cdn.pixabay.com/
+- YouTube Space Invaders tutorial: https://www.youtube.com/watch?v=MCVU0w73uKI
+- Book used as reference: 2D Game Collision Detection, An introduction to clashing geometry in games by Thomas Schwarzl.
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>
