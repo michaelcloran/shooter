@@ -88,7 +88,7 @@ function runGame(){
        if(window.matchMedia("(orientation: landscape)").matches){//digout: https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
             document.getElementById("playSoundTrack").style.display = "none";
             document.getElementById("pauseSoundTrack").style.display = "none";
-            playAudio();
+            if(soundOn == true)Audio();
             myGamePiece.y = window.innerHeight-30;//landscape only
         }
 
@@ -136,7 +136,7 @@ var myGameArea = {
                 let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
                 shot.speedY = +10;
                 bullets.push(shot);
-                playLaser();
+                if(soundOn == true) playLaser();
                
                 
             }
@@ -157,14 +157,14 @@ var myGameArea = {
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
-            playLaser();
+            if(soundOn == true) playLaser();
                
         });
         document.getElementById("left-shoot-button").addEventListener("click",function(){
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
-            playLaser();
+            if(soundOn == true) playLaser();
                
         });
 
@@ -235,7 +235,8 @@ function component(width, height, image_url, x, y, type) {
         }
         
         if(this.imageCtr < maxImageCtr){
-            this.imageCtr++;
+            //this.imageCtr++;
+            setTimeout(this.imageCtr++,1000);
            }else{
             this.state=0;//back to moving state
             this.imageCtr = 0;
@@ -324,94 +325,97 @@ function getRandomEnemy(enemies){
  * updates the game area
  */
 function updateGameArea() {
-    for(let enemy of enemies){//collision detection with spaceships
-        if (myGamePiece.collisionDetection(enemy)) {
-            myGameArea.stop();
-        } 
-    }
-    let shot_index = 0;
-    for(let shot of bullets){//collision detection with weapons firing from defender
-        let index = 0;
-        for(let enemy of enemies){
-            
-            if (enemy.collisionDetection(shot)) {
-                enemy.health--;
+    if(isPaused == false){
 
-                if(enemy.health == 0){
-                    enemies.splice(index, 1);
-                    playExposion();
-                }
-
-                bullets.splice(shot_index,1);
-                let currentScore = parseInt(document.getElementById("score-value").innerHTML);
-                currentScore += 100;
-                document.getElementById("score-value").innerHTML = currentScore;
+        for(let enemy of enemies){//collision detection with spaceships
+            if (myGamePiece.collisionDetection(enemy)) {
+                myGameArea.stop();
             } 
-            index++;
         }
-        shot_index++
-    }
+        let shot_index = 0;
+        for(let shot of bullets){//collision detection with weapons firing from defender
+            let index = 0;
+            for(let enemy of enemies){
+                
+                if (enemy.collisionDetection(shot)) {
+                    enemy.health--;
 
-    let enemy_shot_index = 0;
-    for(let eshot of enemyBullets){
-        if(myGamePiece.collisionDetection(eshot)){
-            enemyBullets.splice(enemy_shot_index,1);
-            myGameArea.stop(); 
+                    if(enemy.health == 0){
+                        enemies.splice(index, 1);
+                        if(soundOn == true) playExposion();
+                    }
+
+                    bullets.splice(shot_index,1);
+                    let currentScore = parseInt(document.getElementById("score-value").innerHTML);
+                    currentScore += 100;
+                    document.getElementById("score-value").innerHTML = currentScore;
+                } 
+                index++;
+            }
+            shot_index++
         }
-        enemy_shot_index++;
-    }
-  
-    /* clears the gameArea for a new paint*/
-    myGameArea.clear();
-    myGamePiece.moveAngle = 0;
-    myGamePiece.speed = 0;
 
-    numberEnemies = enemies.length;
-
-    myGameArea.update();//update the frame Number
-
-    // tests for input
-    if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }//ArrowLeft
-    if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }//ArrowRight
-    if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }//UpArrow
-    if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }//ArrowDown
+        let enemy_shot_index = 0;
+        for(let eshot of enemyBullets){
+            if(myGamePiece.collisionDetection(eshot)){
+                enemyBullets.splice(enemy_shot_index,1);
+                myGameArea.stop(); 
+            }
+            enemy_shot_index++;
+        }
     
-    //updates myGamePiece()
-    if(myGamePiece.speedX == -5 && (myGamePiece.x) > (myGamePiece.width/2 - 5) ){//left
-        myGamePiece.newPos();
-    }else if(myGamePiece.speedX == 5 && ((myGamePiece.x + (myGamePiece.width/2)) < (widthOfCanvas - (myGamePiece.width/2) + 5))){//right
-        myGamePiece.newPos();
-    }
+        /* clears the gameArea for a new paint*/
+        myGameArea.clear();
+        myGamePiece.moveAngle = 0;
+        myGamePiece.speed = 0;
+
+        numberEnemies = enemies.length;
+
+        myGameArea.update();//update the frame Number
+
+        // tests for input
+        if (myGameArea.keys && myGameArea.keys[37]) {myGamePiece.speedX = -5; }//ArrowLeft
+        if (myGameArea.keys && myGameArea.keys[39]) {myGamePiece.speedX = 5; }//ArrowRight
+        if (myGameArea.keys && myGameArea.keys[38]) {myGamePiece.speedY= 1; }//UpArrow
+        if (myGameArea.keys && myGameArea.keys[40]) {myGamePiece.speedY= -1; }//ArrowDown
         
-    myGamePiece.update();
-
-    //updates every enemy
-    for(let item of enemies){
-        item.speedY = -1;
-        item.newPos();
-        item.update();
-    }  
-
-    //updates every shot
-    for(let shot of bullets){
-        shot.newPos();
-        shot.update();
-    }
-
-    //update enemy bullets/shots
-    let sIndex = 0;
-    for(let eShot of enemyBullets){      
-            
-        eShot.newPos();
-        eShot.update();
-        if(eShot.y >= window.innerHeight){
-            enemyBullets.splice(sIndex,1);
+        //updates myGamePiece()
+        if(myGamePiece.speedX == -5 && (myGamePiece.x) > (myGamePiece.width/2 - 5) ){//left
+            myGamePiece.newPos();
+        }else if(myGamePiece.speedX == 5 && ((myGamePiece.x + (myGamePiece.width/2)) < (widthOfCanvas - (myGamePiece.width/2) + 5))){//right
+            myGamePiece.newPos();
         }
-        sIndex++;
-    } 
-    
-    if(enemies.length == 0){//Game over you killed all enemies
-        myGameArea.stop();
+            
+        myGamePiece.update();
+
+        //updates every enemy
+        for(let item of enemies){
+            item.speedY = -1;
+            item.newPos();
+            item.update();
+        }  
+
+        //updates every shot
+        for(let shot of bullets){
+            shot.newPos();
+            shot.update();
+        }
+
+        //update enemy bullets/shots
+        let sIndex = 0;
+        for(let eShot of enemyBullets){      
+                
+            eShot.newPos();
+            eShot.update();
+            if(eShot.y >= window.innerHeight){
+                enemyBullets.splice(sIndex,1);
+            }
+            sIndex++;
+        } 
+        
+        if(enemies.length == 0){//Game over you killed all enemies
+            myGameArea.stop();
+        }
     }
 }
 
@@ -420,7 +424,7 @@ function enemyShoots(shooter){
     let eShot = new component(28,28,"assets/images/fighter/shot_weapon1.png", shooter.x+shooter.width/2, shooter.y, "image_shot");
     eShot.speedY = -10;
     enemyBullets.push(eShot);
-    playEnemyLaser();
+    if(soundOn == true) playEnemyLaser();
     
 }
 

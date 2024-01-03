@@ -24,8 +24,11 @@
       </audio>
     <div>
         <p><span>Score:</span><span id="score-value">0</span></p>
-        <button type="button" id="playSoundTrack" onclick="playAudio()">Play Sound</button>
-        <button type="button" id="pauseSoundTrack" onclick="pauseAudio()">Pause Sound</button>
+        <i class="fa-regular fa-circle-play" id="playSoundTrack"></i>
+        <i class="fa-solid fa-circle-stop" id="pauseSoundTrack"></i>
+        <i class="fa-solid fa-pause" id="pauseGame"></i>
+        <i class="fa-solid fa-circle-xmark" id="exitGame"></i>
+        
     </div>
     <div id="play-contianer">
         <div style="display: flex; justify-content: space-around">
@@ -48,17 +51,36 @@
         var soundTrack = document.getElementById("gameAudio"); 
         var laserSound = "assets/sounds/laser.mp3";
         var enemyLaserSound = "assets/sounds/enemy-laser.mp3";
-        var explosionSound = "assets/sounds/explosion.mp3"
-        
-        function playAudio() { 
-            soundTrack.play(); 
-        } 
-        
-        function pauseAudio() { 
+        var explosionSound = "assets/sounds/explosion.mp3";
+        var isPaused = false;
+        var soundOn = false;
+
+        document.getElementById("playSoundTrack").addEventListener("click", function(){
+            soundTrack.play();
+            soundOn = true;
+        });
+
+        document.getElementById("pauseSoundTrack").addEventListener("click", function(){
             soundTrack.pause(); 
-        } 
+            soundOn = false;
+        });
+        
+        document.getElementById("pauseGame").addEventListener("click", function(){
+            if(isPaused == true){
+                isPaused = false;
+            }else{
+                isPaused = true; 
+            }
+        });
+
+        document.getElementById("exitGame").addEventListener("click", function(){
+            clearInterval(this.interval);
+        window.location = "end_game_page.html?"+parseInt(document.getElementById('score-value').innerHTML);
+        });
+        
         </script>
     <script src="assets/js/script.js"></script>
-    
+    <!-- Font Awesome kit -->
+    <script src="https://kit.fontawesome.com/cfc7fde0a2.js" crossorigin="anonymous"></script>
 </body>
 </html>

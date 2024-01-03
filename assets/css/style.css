@@ -77,15 +77,17 @@ p.some-text, .some_text h2{
     border-color: orange;
     background-color: lightskyblue; 
 }
+ 
 
-#playSoundTrack, #pauseSoundTrack{
+#playSoundTrack, #pauseSoundTrack, #pauseGame, #exitGame{
     padding: 20px;
-   /* margin:40px;*/
+   
     border-style: solid;
     border-width: 20px, 5px;
     border-color: orange;
     background-color: lightskyblue;   
 }
+
 
 #left{
     height:30vh;
