@@ -34,12 +34,9 @@
         
         let score=link.substring(link.indexOf("?")+1,link.length);
         let cookieArr = document.cookie.split(";");
-        console.log(cookieArr);
         let highestScoreArr = cookieArr[1];
         let highestScore = highestScoreArr.split("=");
-        console.log("hs:"+highestScore);
-        console.log("score:"+score);
-        console.log("highestScore:"+highestScore[1]);
+
         if(score > parseInt(highestScore[1])){
             document.cookie = ("highestScore="+score+";");
             document.getElementById("score").innerHTML = "Your highest score was: "+score;
@@ -53,10 +50,10 @@
 
         function playGameOverSound(){
             const audio = new Audio(gameOverSound);
-            let soundOnArr = document.cookie.split("=");
-            console.log(soundOnArr);
-            if(soundOnArr[1] === "true") audio.play();
+            
+            if(getCookieValue("soundOn").localeCompare("true")) audio.play(); 
         }
     </script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
