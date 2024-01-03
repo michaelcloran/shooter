@@ -51,9 +51,20 @@
         function playGameOverSound(){
             const audio = new Audio(gameOverSound);
             
-            if(getCookieValue("soundOn").localeCompare("true")) audio.play(); 
+            if(getCookieValue("soundOn").localeCompare("true") == 0) audio.play(); 
+        }
+
+        function getCookieValue(cookieName){
+            let cookieRawArr = document.cookie.split(";");
+            for(let index in cookieRawArr){
+                let keyArr = cookieRawArr[index].split("=");
+                if(cookieName.localeCompare(keyArr[0].trim()) == 0){
+                    return keyArr[1];
+                }
+            }
+            return false;
         }
     </script>
-    <script src="assets/js/script.js"></script>
+    <!--<script src="assets/js/script.js"></script>-->
 </body>
 </html>

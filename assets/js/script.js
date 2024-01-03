@@ -136,7 +136,8 @@ var myGameArea = {
                 let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
                 shot.speedY = +10;
                 bullets.push(shot);
-                if(getCookieValue("soundOn").localeCompare("true")) playLaser();
+                console.log("getCookieValue(soundOn):"+getCookieValue("soundOn"));
+                if(getCookieValue("soundOn").localeCompare("true") == 0) playLaser();
                 
             }
         })
@@ -156,14 +157,14 @@ var myGameArea = {
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
-            if(getCookieValue("soundOn").localeCompare("true")) playLaser();
+            if(getCookieValue("soundOn").localeCompare("true") == 0) playLaser();
                
         });
         document.getElementById("left-shoot-button").addEventListener("click",function(){
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
-            if(getCookieValue("soundOn").localeCompare("true")) playLaser();
+            if(getCookieValue("soundOn").localeCompare("true") == 0) playLaser();
                
         });
 
@@ -341,7 +342,7 @@ function updateGameArea() {
 
                     if(enemy.health == 0){
                         enemies.splice(index, 1);
-                        if(getCookieValue("soundOn").localeCompare("true")) playExposion();
+                        if(getCookieValue("soundOn").localeCompare("true") == 0) playExposion();
                     }
 
                     bullets.splice(shot_index,1);
@@ -423,7 +424,7 @@ function enemyShoots(shooter){
     let eShot = new component(28,28,"assets/images/fighter/shot_weapon1.png", shooter.x+shooter.width/2, shooter.y, "image_shot");
     eShot.speedY = -10;
     enemyBullets.push(eShot);
-    if(getCookieValue("soundOn").localeCompare("true")) playEnemyLaser();
+    if(getCookieValue("soundOn").localeCompare("true") == 0) playEnemyLaser();
     
 }
 
@@ -460,7 +461,7 @@ function getCookieValue(cookieName){
     let cookieRawArr = document.cookie.split(";");
     for(let index in cookieRawArr){
         let keyArr = cookieRawArr[index].split("=");
-        if(keyArr[0].localeCompare(cookieName)){
+        if(cookieName.localeCompare(keyArr[0].trim()) == 0){
             return keyArr[1];
         }
     }
