@@ -56,6 +56,7 @@
        
         document.cookie = ("soundOn=false;");
         let highestScoreArr = document.cookie.split(";");
+        console.log("highestScoreArr.length:"+highestScoreArr.length);
         if(highestScoreArr.length == 1){
             document.cookie = ("highestScore=200;");
         }

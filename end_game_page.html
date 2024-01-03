@@ -37,7 +37,7 @@
         let highestScoreArr = cookieArr[1];
         let highestScore = highestScoreArr.split("=");
 
-        if(score > parseInt(highestScore[1])){
+        if(score > getCookieValue("highestScore")){
             document.cookie = ("highestScore="+score+";");
             document.getElementById("score").innerHTML = "Your highest score was: "+score;
         }else{
