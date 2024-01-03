@@ -29,11 +29,23 @@
 
     <script>
         var gameOverSound = "assets/sounds/game-over.mp3";
-
+    
         var link = window.location.href;
         
         let score=link.substring(link.indexOf("?")+1,link.length);
-        document.getElementById("score").innerHTML = "Your score was: "+score;
+        let cookieArr = document.cookie.split(";");
+        console.log(cookieArr);
+        let highestScoreArr = cookieArr[1];
+        let highestScore = highestScoreArr.split("=");
+        console.log("hs:"+highestScore);
+        console.log("score:"+score);
+        console.log("highestScore:"+highestScore[1]);
+        if(score > parseInt(highestScore[1])){
+            document.cookie = ("highestScore="+score+";");
+            document.getElementById("score").innerHTML = "Your highest score was: "+score;
+        }else{
+            document.getElementById("score").innerHTML = "Your score was: "+score;
+        }
 
         document.getElementById("playAgain").addEventListener("click", function(){
             window.location = "index.html";
@@ -41,7 +53,9 @@
 
         function playGameOverSound(){
             const audio = new Audio(gameOverSound);
-            audio.play();
+            let soundOnArr = document.cookie.split("=");
+            console.log(soundOnArr);
+            if(soundOnArr[1] === "true") audio.play();
         }
     </script>
 </body>

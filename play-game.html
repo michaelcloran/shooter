@@ -53,16 +53,25 @@
         var enemyLaserSound = "assets/sounds/enemy-laser.mp3";
         var explosionSound = "assets/sounds/explosion.mp3";
         var isPaused = false;
-        var soundOn = false;
+       
+        document.cookie = ("soundOn=false;");
+        let highestScoreArr = document.cookie.split(";");
+        console.log("highestScoreArr.length:"+highestScoreArr.length);
+        if(highestScoreArr.length == 1){
+            document.cookie = ("highestScore=200;");
+        }
+        
 
         document.getElementById("playSoundTrack").addEventListener("click", function(){
             soundTrack.play();
-            soundOn = true;
+            //soundOn = true;
+            document.cookie = ("soundOn=true;");
         });
 
         document.getElementById("pauseSoundTrack").addEventListener("click", function(){
             soundTrack.pause(); 
-            soundOn = false;
+            //soundOn = false;
+            document.cookie = ("soundOn=false;");
         });
         
         document.getElementById("pauseGame").addEventListener("click", function(){

@@ -88,7 +88,7 @@ function runGame(){
        if(window.matchMedia("(orientation: landscape)").matches){//digout: https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
             document.getElementById("playSoundTrack").style.display = "none";
             document.getElementById("pauseSoundTrack").style.display = "none";
-            if(soundOn == true)Audio();
+            if(localStorage.getItem("soundOn") == true)Audio();
             myGamePiece.y = window.innerHeight-30;//landscape only
         }
 
@@ -136,7 +136,7 @@ var myGameArea = {
                 let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
                 shot.speedY = +10;
                 bullets.push(shot);
-                if(soundOn == true) playLaser();
+                if(localStorage.getItem("soundOn") == true) playLaser();
                
                 
             }
@@ -157,14 +157,14 @@ var myGameArea = {
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
-            if(soundOn == true) playLaser();
+            if(localStorage.getItem("soundOn") == true) playLaser();
                
         });
         document.getElementById("left-shoot-button").addEventListener("click",function(){
             let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
-            if(soundOn == true) playLaser();
+            if(localStorage.getItem("soundOn") == true) playLaser();
                
         });
 
@@ -342,7 +342,7 @@ function updateGameArea() {
 
                     if(enemy.health == 0){
                         enemies.splice(index, 1);
-                        if(soundOn == true) playExposion();
+                        if(localStorage.getItem("soundOn") == true) playExposion();
                     }
 
                     bullets.splice(shot_index,1);
@@ -424,7 +424,7 @@ function enemyShoots(shooter){
     let eShot = new component(28,28,"assets/images/fighter/shot_weapon1.png", shooter.x+shooter.width/2, shooter.y, "image_shot");
     eShot.speedY = -10;
     enemyBullets.push(eShot);
-    if(soundOn == true) playEnemyLaser();
+    if(localStorage.getItem("soundOn") == true) playEnemyLaser();
     
 }
 
