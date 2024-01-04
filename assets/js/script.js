@@ -419,9 +419,15 @@ function updateGameArea() {
         }
 
         //updates every bonus
+        let bonusIndex = 0;
         for(let bonus of bonusCredits){
+            bonus.speedY = -2;
             bonus.newPos();
             bonus.update();
+            if(bonus.y >= window.innerHeight-32){
+                bonusCredits.splice(bonusIndex,1);
+            }
+            bonusIndex++;
         }
 
         //update enemy bullets/shots
