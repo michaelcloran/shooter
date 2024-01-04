@@ -13,6 +13,7 @@ var enemies = [];
 var enemyInitialPositions = [ 50, 150, 250, 350, 450, 550, 650, 750, 850, 950];
 var bullets = [];
 var enemyBullets = [];
+var bonusCredits = [];
 var enemyImages = [[
     "assets/images/corvette/Move_1_1.png",//move
     "assets/images/corvette/Move_1_2.png",
@@ -77,9 +78,7 @@ function runGame(){
         document.getElementById("right").style.display= "block";
 
        if(window.matchMedia("(orientation: landscape)").matches){//digout: https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
-            document.getElementById("playSoundTrack").style.display = "none";
-            document.getElementById("pauseSoundTrack").style.display = "none";
-            //if(getCookieValue("soundOn")) Audio();
+            
             myGamePiece.y = window.innerHeight-100;//landscape only
         }
 
@@ -87,8 +86,8 @@ function runGame(){
         myGamePiece.width = Math.floor(myGamePiece.width * 0.3),
         myGamePiece.height =  Math.floor(myGamePiece.height * 0.3)
         for(let enemy of enemies){
-            enemy.width = Math.floor(enemy.width * 0.2),
-            enemy.height =  Math.floor(enemy.height * 0.2)
+            enemy.width = Math.floor(enemy.width * 0.2);
+            enemy.height =  Math.floor(enemy.height * 0.2);
         
         }
     }
@@ -193,12 +192,12 @@ var myGameArea = {
  * @param {The image url} image_url 
  * @param {the x coordinate of image} x 
  * @param {the y coordinate of image} y 
- * @param {either a defender or enemy} type 
+ * @param {either a defender or enemy or shot} type 
  */
 
 function component(width, height, image_url, x, y, type) {
     this.type = type;
-    if (type == "image_defender" || type == "image_enemy" || type == "image_shot") {
+    if (type == "image_defender" || type == "image_enemy" || type == "image_shot" || type == "image_bonus") {
         this.image = new Image();
         
         this.image.src = image_url;
@@ -251,7 +250,7 @@ function component(width, height, image_url, x, y, type) {
                 this.y,
                 this.width, this.height);
 
-        }else if(type == 'image_shot'){
+        }else if(type == 'image_shot' || type == 'image_bonus'){
             if(this.y > 0){//for shots checks if the y position is off the screen
                 ctx.drawImage(this.image, 
                     this.x, 
@@ -264,7 +263,14 @@ function component(width, height, image_url, x, y, type) {
                             bullets.splice(index,1);
                         }
                         index++;
-                     }    
+                     }
+                     index = 0;
+                     for(let bonus of bonusCredits){//collecting offscreen bonus
+                        if(bonus.x === this.x && bonus.y == this.y){
+                            bonusCredits.splice(index,1);
+                        }
+                        index++;
+                     }        
                 }
         }else {
             ctx.fillStyle = blue;
@@ -326,7 +332,7 @@ function updateGameArea() {
         let shot_index = 0;
         for(let shot of bullets){//collision detection with weapons firing from defender
             let index = 0;
-            for(let enemy of enemies){
+            for(let enemy of enemies){//checking for shot hitting enemies
                 
                 if (enemy.collisionDetection(shot)) {
                     enemy.health--;
@@ -339,6 +345,26 @@ function updateGameArea() {
                     bullets.splice(shot_index,1);
                     let currentScore = parseInt(document.getElementById("score-value").innerHTML);
                     currentScore += 100;
+                    document.getElementById("score-value").innerHTML = currentScore;
+                } 
+                index++;
+            }
+            shot_index++
+        }
+
+        shot_index = 0;
+        for(let shot of bullets){//collision detection with weapons firing from defender
+            let index = 0;
+            for(let bonus of bonusCredits){//checking for shot hitting bonus
+                
+                if (bonus.collisionDetection(shot)) {
+                    bonusCredits.splice(index, 1);
+                    
+                    if(getCookieValue("soundOn").localeCompare("true") == 0) playBonusPickup();
+                    
+                    bullets.splice(shot_index,1);
+                    let currentScore = parseInt(document.getElementById("score-value").innerHTML);
+                    currentScore += 500;
                     document.getElementById("score-value").innerHTML = currentScore;
                 } 
                 index++;
@@ -392,6 +418,12 @@ function updateGameArea() {
             shot.update();
         }
 
+        //updates every bonus
+        for(let bonus of bonusCredits){
+            bonus.newPos();
+            bonus.update();
+        }
+
         //update enemy bullets/shots
         let sIndex = 0;
         for(let eShot of enemyBullets){      
@@ -408,6 +440,12 @@ function updateGameArea() {
             respawn();
         }
 
+        if(bonusCredits.length == 0){
+            console.log("spawning bonus");
+            bonusPiece = new component(32,32,"assets/images/points-32x32.png", getRandomPosition(widthOfCanvas-104),Math.floor(Math.random() *window.innerHeight-32), "image_bonus");
+            bonusCredits.push(bonusPiece);
+        }
+
         if(enemies.length == 0){//Game over you killed all enemies
             myGameArea.stop();
         }
@@ -416,19 +454,17 @@ function updateGameArea() {
 
 function respawn(){
     let currentEnemiesCount = enemies.length;
-    let enemiesToAdd = 5 - currentEnemiesCount;
+    let enemiesToAdd = 5 - currentEnemiesCount;//keeps a nice set of enemies on screen
     for(let i=0; i<enemiesToAdd; i++){
         enemyPiece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
         if(window.innerWidth < 1050){
-            enemyPiece.width = Math.floor(enemyPiece.width * 0.2),
-            enemyPiece.height =  Math.floor(enemyPiece.height * 0.2)
+            enemyPiece.width = Math.floor(enemyPiece.width * 0.2);
+            enemyPiece.height =  Math.floor(enemyPiece.height * 0.2);
         }
 
         enemies.push(enemyPiece)
-    }
-
-    
+    } 
 }
 
 function enemyShoots(shooter){
@@ -468,6 +504,11 @@ function playExposion() {
     const audio = new Audio(explosionSound);
     audio.play();
 } 
+
+function playBonusPickup(){
+    const audio = new Audio(bonusPickupSound);
+    audio.play();
+}
 
 function getCookieValue(cookieName){
     let cookieRawArr = document.cookie.split(";");
