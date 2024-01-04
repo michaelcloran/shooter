@@ -36,7 +36,7 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
     } else {
         // Landscape
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.7
-        myGamePiece.y = window.innerHeight -30;//55
+        myGamePiece.y = window.innerHeight -100;//55
     }
 })
 
@@ -53,20 +53,15 @@ function runGame(){
         widthOfCanvas = Math.floor(window.innerWidth);
         myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");
     }
-    enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[0],0, "image_enemy");
-    enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[1],0, "image_enemy");
+   
+    enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
-    enemy3Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[2],0, "image_enemy");
-    enemy4Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[3],0, "image_enemy");
+    enemy3Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    enemy4Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
-    enemy5Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[4],0, "image_enemy");
-    enemy6Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[5],0, "image_enemy");
-
-    enemy7Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[6],0, "image_enemy");
-    enemy8Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[7],0, "image_enemy");
-
-    enemy9Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[8],0, "image_enemy");
-    enemy10Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", enemyInitialPositions[9],0, "image_enemy");
+    enemy5Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    enemy6Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
     enemies.push(enemy1Piece);
     enemies.push(enemy2Piece);
@@ -74,11 +69,7 @@ function runGame(){
     enemies.push(enemy4Piece);
     enemies.push(enemy5Piece);
     enemies.push(enemy6Piece);
-    enemies.push(enemy7Piece);
-    enemies.push(enemy8Piece);
-    enemies.push(enemy9Piece);
-    enemies.push(enemy10Piece);
-
+    
     //see if need to scale images for mobile or tablet                                      
     if(window.innerWidth < 1050 || window.screen.orientation == 90 || window.screen.orientation === -90){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
         widthOfCanvas = Math.floor(window.innerWidth* 0.8);//portrait on mobile
@@ -88,8 +79,8 @@ function runGame(){
        if(window.matchMedia("(orientation: landscape)").matches){//digout: https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
             document.getElementById("playSoundTrack").style.display = "none";
             document.getElementById("pauseSoundTrack").style.display = "none";
-            if(getCookieValue("soundOn")) Audio();
-            myGamePiece.y = window.innerHeight-30;//landscape only
+            //if(getCookieValue("soundOn")) Audio();
+            myGamePiece.y = window.innerHeight-100;//landscape only
         }
 
 
@@ -413,10 +404,31 @@ function updateGameArea() {
             sIndex++;
         } 
         
+        if(enemies.length < 5){
+            respawn();
+        }
+
         if(enemies.length == 0){//Game over you killed all enemies
             myGameArea.stop();
         }
     }
+}
+
+function respawn(){
+    let currentEnemiesCount = enemies.length;
+    let enemiesToAdd = 5 - currentEnemiesCount;
+    for(let i=0; i<enemiesToAdd; i++){
+        enemyPiece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+
+        if(window.innerWidth < 1050){
+            enemyPiece.width = Math.floor(enemyPiece.width * 0.2),
+            enemyPiece.height =  Math.floor(enemyPiece.height * 0.2)
+        }
+
+        enemies.push(enemyPiece)
+    }
+
+    
 }
 
 function enemyShoots(shooter){
@@ -466,4 +478,8 @@ function getCookieValue(cookieName){
         }
     }
     return false;
+}
+
+function getRandomPosition(canvasWidth){
+    return Math.floor(Math.random() * canvasWidth);
 }
