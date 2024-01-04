@@ -58,10 +58,11 @@
         document.cookie = ("soundOn=false;");
         let highestScoreArr = document.cookie.split(";");
         console.log("highestScoreArr.length:"+highestScoreArr.length);
-        if(highestScoreArr.length == 1){
+        if(getCookie("highestScore") == ""){
+        
             document.cookie = ("highestScore=200;");
         }
-        
+        console.log("current Highest score:"+getCookie("highestScore"));
 
         document.getElementById("playSoundTrack").addEventListener("click", function(){
             soundTrack.play();
@@ -90,6 +91,22 @@
         window.location = "end_game_page.html?"+parseInt(document.getElementById('score-value').innerHTML);
         });
         
+        function getCookie(cname) {//digout https://www.w3schools.com/js/js_cookies.asp
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
         </script>
     <script src="assets/js/script.js"></script>
     <!-- Font Awesome kit -->
