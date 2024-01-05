@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function(){
 var myGamePiece;
 
 var enemies = [];
-var enemyInitialPositions = [ 50, 150, 250, 350, 450, 550, 650, 750, 850, 950];
 var bullets = [];
 var enemyBullets = [];
 var bonusCredits = [];
@@ -22,8 +21,34 @@ var enemyImages = [[
     "assets/images/corvette/Attack_1_1.png",//shoot
     "assets/images/corvette/Attack_1_2.png",
     "assets/images/corvette/Attack_1_3.png",
-    "assets/images/corvette/Attack_1_4.png"]
+    "assets/images/corvette/Attack_1_4.png"],
+    [
+    "assets/images/explosion/Circle_explosion1.png",
+    "assets/images/explosion/Circle_explosion2.png",
+    "assets/images/explosion/Circle_explosion3.png",
+    "assets/images/explosion/Circle_explosion4.png",
+    "assets/images/explosion/Circle_explosion5.png",
+    "assets/images/explosion/Circle_explosion6.png",
+    "assets/images/explosion/Circle_explosion7.png",
+    "assets/images/explosion/Circle_explosion8.png",
+    "assets/images/explosion/Circle_explosion9.png",
+    "assets/images/explosion/Circle_explosion10.png"]
 ] ;
+
+var explosion = [
+    "assets/images/explosion/Circle_explosion1.png",
+    "assets/images/explosion/Circle_explosion2.png",
+    "assets/images/explosion/Circle_explosion3.png",
+    "assets/images/explosion/Circle_explosion4.png",
+    "assets/images/explosion/Circle_explosion5.png",
+    "assets/images/explosion/Circle_explosion6.png",
+    "assets/images/explosion/Circle_explosion7.png",
+    "assets/images/explosion/Circle_explosion8.png",
+    "assets/images/explosion/Circle_explosion9.png",
+    "assets/images/explosion/Circle_explosion10.png"
+];
+
+
 var widthOfCanvas = Math.floor(window.innerWidth);//landscape 0.7
 
 let portrait = window.matchMedia("(orientation: portrait)");
@@ -222,11 +247,15 @@ function component(width, height, image_url, x, y, type) {
             case 1://shooting state
                 maxImageCtr = 3;
                 break;
+            case 2://explosion state
+                console.log("Explosion state setting maxImageCtr to 10");
+                maxImageCtr = 9;
+                break;
         }
         
         if(this.imageCtr < maxImageCtr){
-            //this.imageCtr++;
-            setTimeout(this.imageCtr++,1000);
+            this.imageCtr++;
+            
            }else{
             this.state=0;//back to moving state
             this.imageCtr = 0;
@@ -243,6 +272,9 @@ function component(width, height, image_url, x, y, type) {
                 this.width, this.height);
             
         } else if(type == "image_enemy"){ 
+            console.log("state:"+this.state+" imageCtr:"+this.imageCtr);
+            //console.log("eImages:"+enemyImages);
+            console.log("EImg:"+enemyImages[this.state][this.imageCtr]);
             this.image.src = enemyImages[this.state][this.imageCtr];
 
             ctx.drawImage(this.image, 
@@ -335,11 +367,13 @@ function updateGameArea() {
             for(let enemy of enemies){//checking for shot hitting enemies
                 
                 if (enemy.collisionDetection(shot)) {
-                    enemy.health--;
+                    if(enemy.health!=0) enemy.health--;
 
                     if(enemy.health == 0){
-                        enemies.splice(index, 1);
+                        //enemies.splice(index, 1);
+                        enemyDies(index);
                         if(getCookieValue("soundOn").localeCompare("true") == 0) playExposion();
+                        
                     }
 
                     bullets.splice(shot_index,1);
@@ -406,10 +440,22 @@ function updateGameArea() {
         myGamePiece.update();
 
         //updates every enemy
+        index = 0;
         for(let item of enemies){
-            item.speedY = -1;
-            item.newPos();
-            item.update();
+            console.log("health:"+item.health+" state:"+item.state);
+            if(item.health == 0 && item.state == 2){
+                console.log("killing index:"+index+" imageCtr:"+item.imageCtr);
+                if(item.imageCtr == 8){
+                    console.log("dead removing enemy index:"+index);
+                    enemies.splice(index, 1);
+                }
+                item.update();
+            }else{
+                item.speedY = -1;
+                item.newPos();
+                item.update();
+            }
+            index++;
         }  
 
         //updates every shot
@@ -471,6 +517,12 @@ function respawn(){
 
         enemies.push(enemyPiece)
     } 
+}
+
+function enemyDies(index){
+    console.log("setting enemy state to 2 index:"+index);
+    enemies[index].state = 2;
+
 }
 
 function enemyShoots(shooter){
