@@ -177,6 +177,8 @@ the Index.html, play-game.html,end_game_page.html and 404.html were simulated in
 - Validation of code<br>
 
 - CSS<br>
+I went to https://jigsaw.w3.org/css-validator/ and put in the url of my site and got the following results<br>
+![Screenshot](assets/readme_images/CSS_validation.png)<br>
 - HTML<br>
 I went to https://validator.w3.org/ to validate the HTML of the landing page.<br>
 ![Screenshot](assets/readme_images/HTML_validator_index.png)<br>

@@ -64,7 +64,7 @@ p.some-text, .some_text h2{
     padding: 20px;
     margin-top:100px;
     border-style: solid;
-    border-width: 20px;
+    border-width: 1px;
     border-color: orange;
     background-color: lightskyblue; 
 }
@@ -73,7 +73,7 @@ p.some-text, .some_text h2{
     padding: 20px;
     margin-top:300px;
     border-style: solid;
-    border-width: 20px;
+    border-width: 1px;
     border-color: orange;
     background-color: lightskyblue; 
 }
@@ -83,7 +83,7 @@ p.some-text, .some_text h2{
     padding: 20px;
    
     border-style: solid;
-    border-width: 20px;
+    border-width: 1px;
     border-color: orange;
     background-color: lightskyblue;   
 }
@@ -130,7 +130,7 @@ p.some-text, .some_text h2{
         padding: 20px;
         margin-top:480px;
         border-style: solid;
-        border-width: 20px;
+        border-width: 1px;
         border-color: orange;
         background-color: lightskyblue; 
     }

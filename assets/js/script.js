@@ -35,20 +35,7 @@ var enemyImages = [[
     "assets/images/explosion/Circle_explosion10.png"]
 ] ;
 
-var explosion = [
-    "assets/images/explosion/Circle_explosion1.png",
-    "assets/images/explosion/Circle_explosion2.png",
-    "assets/images/explosion/Circle_explosion3.png",
-    "assets/images/explosion/Circle_explosion4.png",
-    "assets/images/explosion/Circle_explosion5.png",
-    "assets/images/explosion/Circle_explosion6.png",
-    "assets/images/explosion/Circle_explosion7.png",
-    "assets/images/explosion/Circle_explosion8.png",
-    "assets/images/explosion/Circle_explosion9.png",
-    "assets/images/explosion/Circle_explosion10.png"
-];
-
-
+var numberEnemies = 0;
 var widthOfCanvas = Math.floor(window.innerWidth);//landscape 0.7
 
 let portrait = window.matchMedia("(orientation: portrait)");
@@ -64,7 +51,7 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.7
         myGamePiece.y = window.innerHeight -100;//55
     }
-})
+});
 
 /**
  * the main game "loop", called when the script is first loaded
@@ -80,14 +67,14 @@ function runGame(){
         myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");
     }
    
-    enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
-    enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
-    enemy3Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
-    enemy4Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy3Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy4Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
-    enemy5Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
-    enemy6Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy5Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy6Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
     enemies.push(enemy1Piece);
     enemies.push(enemy2Piece);
@@ -108,8 +95,8 @@ function runGame(){
         }
 
 
-        myGamePiece.width = Math.floor(myGamePiece.width * 0.3),
-        myGamePiece.height =  Math.floor(myGamePiece.height * 0.3)
+        myGamePiece.width = Math.floor(myGamePiece.width * 0.3);
+        myGamePiece.height =  Math.floor(myGamePiece.height * 0.3);
         for(let enemy of enemies){
             enemy.width = Math.floor(enemy.width * 0.2);
             enemy.height =  Math.floor(enemy.height * 0.2);
@@ -140,7 +127,7 @@ var myGameArea = {
             myGameArea.keys = (myGameArea.keys || []);
             myGameArea.keys[e.keyCode] = (e.type == "keydown");
            
-        })
+        });
         window.addEventListener('keyup', function (e) {
             myGameArea.keys[e.keyCode] = (e.type == "keydown");
             
@@ -154,7 +141,7 @@ var myGameArea = {
                 if(getCookieValue("soundOn").localeCompare("true") == 0) playLaser();
                 
             }
-        })
+        });
         document.getElementById("left-button").addEventListener("click",function(){
             
             if((myGamePiece.x) > (myGamePiece.width/2 - 5)){
@@ -204,7 +191,7 @@ var myGameArea = {
             this.frameNo = 0;
         }
     }
-}
+};
 
 /**
  * 
@@ -241,24 +228,24 @@ function component(width, height, image_url, x, y, type) {
     this.update = function() {
         switch(this.state){
             case 0://moving state
-                maxImageCtr = 2;
+                this.maxImageCtr = 2;
                 break;
             case 1://shooting state
-                maxImageCtr = 3;
+                this.maxImageCtr = 3;
                 break;
             case 2://explosion state
-                maxImageCtr = 9;
+                this.maxImageCtr = 9;
                 break;
         }
         
-        if(this.imageCtr < maxImageCtr){
+        if(this.imageCtr < this.maxImageCtr){
             this.imageCtr++;
             
            }else{
             this.state=0;//back to moving state
             this.imageCtr = 0;
            }
-        ctx = myGameArea.context;
+        let ctx = myGameArea.context;
         ctx.save();
        
         if (type == "image_defender") {
@@ -300,17 +287,16 @@ function component(width, height, image_url, x, y, type) {
                      }        
                 }
         }else {
-            ctx.fillStyle = blue;
+            ctx.fillStyle = "blue";
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
         ctx.restore();
-    }
+    };
     this.newPos = function() {
         
         this.x += this.speedX;
         this.y -= this.speedY; 
 
-        let i = 0;
         for(let item of enemies){
             if(item.y > window.innerHeight){
                 item.x =  Math.floor(Math.random() * widthOfCanvas);
@@ -318,7 +304,7 @@ function component(width, height, image_url, x, y, type) {
                 myGameArea.frameNo = 0;
             }
         }
-    }
+    };
     this.collisionDetection = function(otherobj) {
         var myleft = this.x;
         var myright = this.x + (this.width);
@@ -333,7 +319,7 @@ function component(width, height, image_url, x, y, type) {
           crash = false;
         }
         return crash;
-      }
+      };
 }
 
 function getRandomEnemy(enemies){
@@ -378,7 +364,7 @@ function updateGameArea() {
                 } 
                 index++;
             }
-            shot_index++
+            shot_index++;
         }
 
         shot_index = 0;
@@ -435,7 +421,7 @@ function updateGameArea() {
         myGamePiece.update();
 
         //updates every enemy
-        index = 0;
+        let index = 0;
         for(let item of enemies){
             if(item.health == 0 && item.state == 2){
                 if(item.imageCtr == 8){
@@ -485,7 +471,7 @@ function updateGameArea() {
         }
 
         if(bonusCredits.length == 0){
-            bonusPiece = new component(32,32,"assets/images/points-32x32.png", getRandomPosition(widthOfCanvas-104),Math.floor(Math.random() *window.innerHeight-32), "image_bonus");
+            let bonusPiece = new component(32,32,"assets/images/points-32x32.png", getRandomPosition(widthOfCanvas-104),Math.floor(Math.random() *window.innerHeight-32), "image_bonus");
             bonusCredits.push(bonusPiece);
         }
 
@@ -499,14 +485,14 @@ function respawn(){
     let currentEnemiesCount = enemies.length;
     let enemiesToAdd = 5 - currentEnemiesCount;//keeps a nice set of enemies on screen
     for(let i=0; i<enemiesToAdd; i++){
-        enemyPiece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+        let enemyPiece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
         if(window.innerWidth < 1050){
             enemyPiece.width = Math.floor(enemyPiece.width * 0.2);
             enemyPiece.height =  Math.floor(enemyPiece.height * 0.2);
         }
 
-        enemies.push(enemyPiece)
+        enemies.push(enemyPiece);
     } 
 }
 
