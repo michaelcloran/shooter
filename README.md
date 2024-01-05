@@ -170,6 +170,104 @@ I went to website craftpix.net and done a search for space and found a free imag
 
 ## 5. Testing
 - Tests Done<br>
+It should be noted about mobile portrait or landscape usage. When on the landing page you should decide which orientation to play the game in and switch to it on the landing page as if you switch orientation during the game, it upsets the user interface!!.<br>
+<table>
+    <tr>
+        <th>device</th>
+        <th>portrait</th>
+        <th>landscape</th>
+    </tr>
+    <tr>
+        <td>desktop</td>
+        <td>Good expenience</td>
+        <td>n/a</td>
+    </tr>
+    <tr>
+        <td>iPhone SE</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>iPhone XR</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>iPhone 12 Pro</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>iPhone 14 Pro Max</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>Pixel 7</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>Samsung Galaxy S8+</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>Samsung Galaxy S20 Ultra</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>iPad Mini</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>iPad Air</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>iPad Pro</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>Surface Pro 7</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>Surface Duo</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>Galaxy Fold</td>
+        <td>Good</td>
+        <td>Good but limited space</td>
+    </tr>
+    <tr>
+        <td>Samsung Galaxy A51/71</td>
+        <td>Good</td>
+        <td>Good</td>
+    </tr>
+    <tr>
+        <td>Nest Hub</td>
+        <td>Good</td>
+        <td>n/a</td>
+    </tr>
+    <tr>
+        <td>Nest Hub Max</td>
+        <td>Good</td>
+        <td>n/a</td>
+    </tr>
+    <tr>
+        <td>Huawei P20 Lite (actual Mobile Phone)</td>
+        <td>Space is limited, controls are hard</td>
+        <td>Space is limited, controls are hard</td>
+    </tr>
+</table>
 
 - Accessibility<br>
 - Lighthouse testing<br>
