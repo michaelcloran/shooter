@@ -33,8 +33,6 @@
 -5. [Testing](#5-testing)<br>
 - Accessibility<br>
 - Lighthouse testing<br>
-- Desktop<br>
-- Mobile<br>
 - Functional tests<br>
 - Validation of code<br>
 - CSS<br>
@@ -166,12 +164,30 @@ I went to website craftpix.net and done a search for space and found a free imag
 ## 5. Testing
 - Accessibility<br>
 - Lighthouse testing<br>
-- Desktop<br>
-- Mobile<br>
+the Index.html, play-game.html,end_game_page.html and 404.html were simulated in incognito mode on a desktop and the following results were found.<br>
+![Screenshot](assets/readme_images/index_lightHouseTests.png)<br>
+
+![Screenshot](assets/readme_images/play-game_lightHouseTests.png)<br>
+
+![Screenshot](assets/readme_images/end_game_lightHouseTests.png)<br>
+
+![Screenshot](assets/readme_images/404_lightHouseTests.png)<br>
+
 - Functional tests<br>
 - Validation of code<br>
+
 - CSS<br>
 - HTML<br>
+I went to https://validator.w3.org/ to validate the HTML of the landing page.<br>
+![Screenshot](assets/readme_images/HTML_validator_index.png)<br>
+
+![Screenshot](assets/readme_images/HTML_validator_play-game.png)<br>
+
+![Screenshot](assets/readme_images/HTML_validation_end_game_page.png)<br>
+
+![Screenshot](assets/readme_images/HTML_validation_404.png)<br>
+
+
 - JavaScript<br>
 
 <hr>
@@ -245,6 +261,7 @@ I used the above to give me ideas on how to resize the images for mobile and sma
 - sound track background: https://cdn.pixabay.com/
 - YouTube Space Invaders tutorial: https://www.youtube.com/watch?v=MCVU0w73uKI
 - Book used as reference: 2D Game Collision Detection, An introduction to clashing geometry in games by Thomas Schwarzl.
+- Book used as reference: Game Programming All In One Third Edition by Jonathan S. Harbour.
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>
