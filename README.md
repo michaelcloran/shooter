@@ -31,6 +31,7 @@
 
 
 -5. [Testing](#5-testing)<br>
+- Tests Done<br>
 - Accessibility<br>
 - Lighthouse testing<br>
 - Functional tests<br>
@@ -64,8 +65,14 @@ The favicon is a fun icon to show in the browser tabs to quickly identify the Sh
 - The Landing Page<br>
 ![Screenshot](assets/readme_images/landing-page.png)<br>
 
-- The Game Playing Area<br>Notice the two buttons play sound and pause sound. These buttons are used to play and stall background music.<br>
+- The Game Playing Area<br>
+Notice the four buttons play sound effects or to stop sound effects, the pause button is used to pause the game and the x button is used to exit the game. This game uses Cookies where the cookied stores the soundOn boolean and the highestScore variable. If on the credits page you achieve a credit more than the cookie highestScore then you are congradulated and a new personal highScore is stored into the Cookie. The game starts off with 6 enemies on the screen and if you kill some, then in the game loop a respawn of 5 - numberOfEnemies is respawned . Also powerups work which is done via a dollar sign box which is put on a random position on the screen and it moves down at a certain speed and if it goes over the screen space available it is garbage collected and a respawn is done. If the box is shot the player gets bonus points credited to their score. A cool effect which should be dealt with is the states of the enemies. State 0 for normal movement where 3 images are cycled through to show the jets. State 1 for discharging weapons where 4 images are cycled through and last but not least where in state 2 where the enemy is dieing 10 images cycled through to show an explosion!! Awesome!!<br>
+It should be also said if you are playing this game on a mobile buttons appear left and right of the canvas to move left and right and to shoot. Also on a mobile the images are scaled in order to be able to make the game playable on a mobile.
 ![Screenshot](assets/readme_images/game-playing-area.png)<br>
+
+![Screenshot](assets/readme_images/game-playing-area-mobile-portrait.png)<br>
+
+![Screenshot](assets/readme_images/game-playing-area-mobile-landscape.png)<br>
 
 - The Game Over Page<br>
 ![Screenshot](assets/readme_images/game-over-page.png)<br>
@@ -74,8 +81,7 @@ The favicon is a fun icon to show in the browser tabs to quickly identify the Sh
 ![Screenshot](assets/readme_images/404_page.png)<br>
 
 - Features left to implement<br>
-The game works well but I have not implemented powerups which would be like boxes which could be shot with current code and if shot it adds to credits of the player.
-The game when used on a mobile if you do a touch screen select and move gesture then the controls get a little confused. I am currently unsure how to fix this gesture. If the buttons are clicked the ship can move left and right and shoot. I have chosen to have the player continually scroll left or right as with buttons it hard to continually click the button and move!!.
+The game works well. The game when used on a mobile if you do a touch screen select and move gesture then the controls get a little confused. I am currently unsure how to fix this gesture. If the buttons are clicked the ship can move left and right and shoot. I have chosen to have the player continually scroll left or right as with buttons it hard to continually click the button and move!!.
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>
@@ -142,6 +148,7 @@ HTML was the markup used for the site.
 - CSS<br>
 CSS was used to do some basic styling.
 - JavaScript<br>
+The Game Engine was written in JavaScript.
 - Git<br>
 Git was used.
 - GitHub<br>
@@ -162,6 +169,8 @@ I went to website craftpix.net and done a search for space and found a free imag
 </p>
 
 ## 5. Testing
+- Tests Done<br>
+
 - Accessibility<br>
 - Lighthouse testing<br>
 the Index.html, play-game.html,end_game_page.html and 404.html were simulated in incognito mode on a desktop and the following results were found.<br>
@@ -191,6 +200,7 @@ I went to https://validator.w3.org/ to validate the HTML of the landing page.<br
 
 
 - JavaScript<br>
+I went to https://jshint.com/ and copied over my script.js and found various issues mostly todo with missing semicolons and when this was fixed, some variables had to be used in the this.variable context.
 
 <hr>
 <p align="right">
@@ -251,7 +261,7 @@ from dropdown choose main and root and clicked on save.
 
 ## 7. Credits
 - W3schools.com: https://www.w3schools.com/graphics/game_intro.asp <br>
-I used this tutorial to build the game engine from scratch.
+I used this tutorial to build the game engine from scratch. Boilerplate code was taken from it!!.
 - Balsamiq<br>
 I used Balsamiq to do mockup wireframes.
 

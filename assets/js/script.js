@@ -384,7 +384,7 @@ function updateGameArea() {
                 } 
                 index++;
             }
-            shot_index++
+            shot_index++;
         }
 
         let enemy_shot_index = 0;
