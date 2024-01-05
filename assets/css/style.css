@@ -130,7 +130,7 @@ p.some-text, .some_text h2{
         padding: 20px;
         margin-top:480px;
         border-style: solid;
-        border-width: 20px, 5px;
+        border-width: 20px;
         border-color: orange;
         background-color: lightskyblue; 
     }
