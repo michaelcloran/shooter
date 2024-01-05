@@ -151,7 +151,6 @@ var myGameArea = {
                 let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
                 shot.speedY = +10;
                 bullets.push(shot);
-                console.log("getCookieValue(soundOn):"+getCookieValue("soundOn"));
                 if(getCookieValue("soundOn").localeCompare("true") == 0) playLaser();
                 
             }
@@ -248,7 +247,6 @@ function component(width, height, image_url, x, y, type) {
                 maxImageCtr = 3;
                 break;
             case 2://explosion state
-                console.log("Explosion state setting maxImageCtr to 10");
                 maxImageCtr = 9;
                 break;
         }
@@ -272,9 +270,6 @@ function component(width, height, image_url, x, y, type) {
                 this.width, this.height);
             
         } else if(type == "image_enemy"){ 
-            console.log("state:"+this.state+" imageCtr:"+this.imageCtr);
-            //console.log("eImages:"+enemyImages);
-            console.log("EImg:"+enemyImages[this.state][this.imageCtr]);
             this.image.src = enemyImages[this.state][this.imageCtr];
 
             ctx.drawImage(this.image, 
@@ -442,11 +437,8 @@ function updateGameArea() {
         //updates every enemy
         index = 0;
         for(let item of enemies){
-            console.log("health:"+item.health+" state:"+item.state);
             if(item.health == 0 && item.state == 2){
-                console.log("killing index:"+index+" imageCtr:"+item.imageCtr);
                 if(item.imageCtr == 8){
-                    console.log("dead removing enemy index:"+index);
                     enemies.splice(index, 1);
                 }
                 item.update();
@@ -493,7 +485,6 @@ function updateGameArea() {
         }
 
         if(bonusCredits.length == 0){
-            console.log("spawning bonus");
             bonusPiece = new component(32,32,"assets/images/points-32x32.png", getRandomPosition(widthOfCanvas-104),Math.floor(Math.random() *window.innerHeight-32), "image_bonus");
             bonusCredits.push(bonusPiece);
         }
@@ -520,9 +511,7 @@ function respawn(){
 }
 
 function enemyDies(index){
-    console.log("setting enemy state to 2 index:"+index);
     enemies[index].state = 2;
-
 }
 
 function enemyShoots(shooter){
