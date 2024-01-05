@@ -31,10 +31,9 @@
 
 
 -5. [Testing](#5-testing)<br>
-- Tests Done<br>
+- Tests Done/Functional tests<br>
 - Accessibility<br>
 - Lighthouse testing<br>
-- Functional tests<br>
 - Validation of code<br>
 - CSS<br>
 - HTML<br>
@@ -169,8 +168,9 @@ I went to website craftpix.net and done a search for space and found a free imag
 </p>
 
 ## 5. Testing
-- Tests Done<br>
+- Tests Done/ Functional tests<br>
 It should be noted about mobile portrait or landscape usage. When on the landing page you should decide which orientation to play the game in and switch to it on the landing page as if you switch orientation during the game, it upsets the user interface!!.<br>
+It should also be noted that the frame sequence for the state explosion does not always show an explosion. I am not sure why?. I think its todo with processor speed?? (too fast??). I have also experienced sticky buttons when playing on an actual mobile?
 <table>
     <tr>
         <th>device</th>
@@ -280,7 +280,6 @@ the Index.html, play-game.html,end_game_page.html and 404.html were simulated in
 
 ![Screenshot](assets/readme_images/404_lightHouseTests.png)<br>
 
-- Functional tests<br>
 - Validation of code<br>
 
 - CSS<br>
