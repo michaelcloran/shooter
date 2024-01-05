@@ -57,12 +57,10 @@
        
         document.cookie = ("soundOn=false;");
         let highestScoreArr = document.cookie.split(";");
-        console.log("highestScoreArr.length:"+highestScoreArr.length);
         if(getCookie("highestScore") == ""){
         
             document.cookie = ("highestScore=200;");
         }
-        console.log("current Highest score:"+getCookie("highestScore"));
 
         document.getElementById("playSoundTrack").addEventListener("click", function(){
             soundTrack.play();
