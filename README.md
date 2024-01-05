@@ -276,7 +276,7 @@ the Index.html, play-game.html,end_game_page.html and 404.html were simulated in
 
 ![Screenshot](assets/readme_images/play-game_lightHouseTests.png)<br>
 
-![Screenshot](assets/readme_images/end_game_lightHouseTests.png)<br>
+![Screenshot](assets/readme_images/end-game_lightHouseTests.png)<br>
 
 ![Screenshot](assets/readme_images/404_lightHouseTests.png)<br>
 
