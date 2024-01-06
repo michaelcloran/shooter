@@ -217,6 +217,7 @@ function component(width, height, image_url, x, y, type) {
     this.health = 2;
     this.state = 0;//moving state
     this.maxImageCtr = 0;
+    this.delay = 2;
     this.imageCtr = 0;
     this.width = width;
     this.height = height;
@@ -237,7 +238,8 @@ function component(width, height, image_url, x, y, type) {
                 this.maxImageCtr = 9;
                 break;
         }
-        
+        if(this.delay === 2){
+            this.delay = 0;
         if(this.imageCtr < this.maxImageCtr){
             this.imageCtr++;
             
@@ -245,6 +247,9 @@ function component(width, height, image_url, x, y, type) {
             this.state=0;//back to moving state
             this.imageCtr = 0;
            }
+        }else{
+            this.delay++;
+        }
         let ctx = myGameArea.context;
         ctx.save();
        
@@ -423,9 +428,10 @@ function updateGameArea() {
         //updates every enemy
         let index = 0;
         for(let item of enemies){
-            if(item.health == 0 && item.state == 2){
+            if(item.health == 0 && item.state == 2){//dieing
                 if(item.imageCtr == 8){
-                    enemies.splice(index, 1);
+                    enemies[index].imageCtr = 0;
+                    enemies.splice(index, 1);//dead
                 }
                 item.update();
             }else{
