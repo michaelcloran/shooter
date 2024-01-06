@@ -44,12 +44,12 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
     if(e.matches) {
         // Portrait mode
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.4
-        myGamePiece.y = window.innerHeight -30;//55
+        myGamePiece.y = window.innerHeight -100;//55
 
     } else {
         // Landscape
         if(window.innerWidth < 1000) widthOfCanvas = Math.floor(window.innerWidth* 0.8);//0.7
-        myGamePiece.y = window.innerHeight -100;//55
+        myGamePiece.y = window.innerHeight -110;//55
     }
 });
 
@@ -61,10 +61,10 @@ function runGame(){
    
     if(window.innerWidth < 1050 || window.screen.orientation == 90 || window.screen.orientation === -90){
         widthOfCanvas = Math.floor(window.innerWidth* 0.8);
-        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-100, "image_defender");//-55
+        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");//-55
     }else{
         widthOfCanvas = Math.floor(window.innerWidth);
-        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");
+        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-160, "image_defender");
     }
    
     let enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
@@ -91,7 +91,7 @@ function runGame(){
 
        if(window.matchMedia("(orientation: landscape)").matches){//digout: https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
             
-            myGamePiece.y = window.innerHeight-100;//landscape only
+            myGamePiece.y = window.innerHeight-110;//landscape only
         }
 
 
@@ -135,7 +135,7 @@ var myGameArea = {
             myGamePiece.speedY = 0;
 
             if(e.key == ' ' ) {//spacebar
-                let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
+                let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", (myGamePiece.x+myGamePiece.width/2)-14, (myGamePiece.y-myGamePiece.height+30), "image_shot");
                 shot.speedY = +10;
                 bullets.push(shot);
                 if(getCookieValue("soundOn").localeCompare("true") == 0) playLaser();
@@ -256,10 +256,22 @@ function component(width, height, image_url, x, y, type) {
         if (type == "image_defender") {
             ctx.translate(this.x, this.y);
            
-            ctx.drawImage(this.image, 
+            /*ctx.drawImage(this.image, 
                 this.width / -2, 
                 this.height / -2,
                 this.width, this.height);
+                */
+                ctx.fillStyle = "blue";
+                ctx.fillRect(0, 0, this.width, this.height);
+
+               ctx.drawImage(this.image,
+                0,
+                0,
+                this.width,
+                this.height);
+
+                
+            
             
         } else if(type == "image_enemy"){ 
             this.image.src = enemyImages[this.state][this.imageCtr];
