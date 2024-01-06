@@ -256,23 +256,12 @@ function component(width, height, image_url, x, y, type) {
         if (type == "image_defender") {
             ctx.translate(this.x, this.y);
            
-            /*ctx.drawImage(this.image, 
-                this.width / -2, 
-                this.height / -2,
-                this.width, this.height);
-                */
-                ctx.fillStyle = "blue";
-                ctx.fillRect(0, 0, this.width, this.height);
-
-               ctx.drawImage(this.image,
+            ctx.drawImage(this.image,
                 0,
                 0,
                 this.width,
                 this.height);
-
-                
-            
-            
+  
         } else if(type == "image_enemy"){ 
             this.image.src = enemyImages[this.state][this.imageCtr];
 
