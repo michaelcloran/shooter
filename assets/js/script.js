@@ -240,13 +240,13 @@ function component(width, height, image_url, x, y, type) {
         }
         if(this.delay === 2){
             this.delay = 0;
-        if(this.imageCtr < this.maxImageCtr){
-            this.imageCtr++;
-            
-           }else{
-            this.state=0;//back to moving state
-            this.imageCtr = 0;
-           }
+            if(this.imageCtr < this.maxImageCtr){
+                this.imageCtr++;
+                
+            }else{
+                this.state=0;//back to moving state
+                this.imageCtr = 0;
+            }
         }else{
             this.delay++;
         }
