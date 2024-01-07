@@ -155,14 +155,14 @@ var myGameArea = {
             }
         });
         document.getElementById("right-shoot-button").addEventListener("click",function(){
-            let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
+            let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", (myGamePiece.x+myGamePiece.width/2)-14, myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
             if(getCookieValue("soundOn").localeCompare("true") == 0) playLaser();
                
         });
         document.getElementById("left-shoot-button").addEventListener("click",function(){
-            let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", myGamePiece.x-15,myGamePiece.y-myGamePiece.height+30, "image_shot");
+            let shot = new component(28,28,"assets/images/fighter/shot_weapon1.png", (myGamePiece.x+myGamePiece.width/2)-14 ,myGamePiece.y-myGamePiece.height+30, "image_shot");
             shot.speedY = +10;
             bullets.push(shot);
             if(getCookieValue("soundOn").localeCompare("true") == 0) playLaser();
