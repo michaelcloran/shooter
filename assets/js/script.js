@@ -61,10 +61,10 @@ function runGame(){
    
     if(window.innerWidth < 1050 || window.screen.orientation == 90 || window.screen.orientation === -90){
         widthOfCanvas = Math.floor(window.innerWidth* 0.8);
-        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");//-55
+        myGamePiece = new component(64,93,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-120, "image_defender");//-55
     }else{
         widthOfCanvas = Math.floor(window.innerWidth);
-        myGamePiece = new component(104,83,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-160, "image_defender");
+        myGamePiece = new component(64,93,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-160, "image_defender");
     }
    
     let enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
@@ -256,6 +256,9 @@ function component(width, height, image_url, x, y, type) {
         if (type == "image_defender") {
             ctx.translate(this.x, this.y);
            
+            ctx.fillStyle = "blue";
+            ctx.fillRect(0,0, this.width, this.height);
+
             ctx.drawImage(this.image,
                 0,
                 0,
