@@ -60,8 +60,8 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
 function runGame(){
    
     if(window.innerWidth < 1050 || window.screen.orientation == 90 || window.screen.orientation === -90){
-        widthOfCanvas = Math.floor(window.innerWidth* 0.8);
-        myGamePiece = new component(64,93,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-140, "image_defender");//-55
+        widthOfCanvas = Math.floor(window.innerWidth* 0.8);//leave space for buttons
+        myGamePiece = new component(64,93,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-160, "image_defender");//-55
     }else{
         widthOfCanvas = Math.floor(window.innerWidth);
         myGamePiece = new component(64,93,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-160, "image_defender");
