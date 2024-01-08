@@ -434,7 +434,7 @@ function updateGameArea() {
         let index = 0;
         for(let item of enemies){
             if(item.health == 0 && item.state == 2){//dieing
-                if(item.imageCtr == 9){//8
+                if(item.imageCtr == 9){//10 images 0 to 9
                     enemies[index].imageCtr = 0;
                     enemies.splice(index, 1);//dead
                 }
