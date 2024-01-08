@@ -80,7 +80,7 @@ It should be also said if you are playing this game on a mobile buttons appear l
 ![Screenshot](assets/readme_images/404_page.png)<br>
 
 - Features left to implement<br>
-The game works well. The game when used on a mobile if you do a touch screen select and move gesture then the controls get a little confused. I am currently unsure how to fix this gesture. If the buttons are clicked the ship can move left and right and shoot. I have chosen to have the player continually scroll left or right as with buttons it hard to continually click the button and move!!.
+The game works well. The game when used on a mobile if you do a touch screen select and move gesture then the controls get a little confused. I am currently unsure how to fix this gesture. If the buttons are clicked the ship can move left and right and shoot. I have chosen to have the player continually scroll left or right as with buttons it hard to continually click the button and move!!. Note that on a desktop I notice some flicker. This would be fixed by double buffering.
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>

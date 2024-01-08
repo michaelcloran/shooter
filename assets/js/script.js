@@ -240,7 +240,7 @@ function component(width, height, image_url, x, y, type) {
         }
         if(this.delay === 2){
             this.delay = 0;
-            if(this.imageCtr < this.maxImageCtr){
+            if(this.imageCtr <= this.maxImageCtr){
                 this.imageCtr++;
                 
             }else{
@@ -434,7 +434,7 @@ function updateGameArea() {
         let index = 0;
         for(let item of enemies){
             if(item.health == 0 && item.state == 2){//dieing
-                if(item.imageCtr == 8){
+                if(item.imageCtr == 9){//8
                     enemies[index].imageCtr = 0;
                     enemies.splice(index, 1);//dead
                 }
