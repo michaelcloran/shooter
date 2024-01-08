@@ -256,9 +256,10 @@ function component(width, height, image_url, x, y, type) {
         if (type == "image_defender") {
             ctx.translate(this.x, this.y);
            
+            /* left here for debugging bounds
             ctx.fillStyle = "blue";
             ctx.fillRect(0,0, this.width, this.height);
-
+            */
             ctx.drawImage(this.image,
                 0,
                 0,
