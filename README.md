@@ -170,7 +170,8 @@ I went to website craftpix.net and done a search for space and found a free imag
 ## 5. Testing
 - Tests Done/ Functional tests<br>
 It should be noted about mobile portrait or landscape usage. When on the landing page you should decide which orientation to play the game in and switch to it on the landing page as if you switch orientation during the game, it upsets the user interface!!.<br>
-It should also be noted that the frame sequence for the state explosion does not always show an explosion. I am not sure why?. I think its todo with processor speed?? (too fast??). I have also experienced sticky buttons when playing on an actual mobile?
+The following table outlines the testing for this project. I used Google Chrome for most testing but I have also used Microsoft Edge and an actual mobile phone and got reasonable results.
+
 <table>
     <tr>
         <th>device</th>
@@ -269,7 +270,11 @@ It should also be noted that the frame sequence for the state explosion does not
     </tr>
 </table>
 
+For mobile phone usage an ability to add a GamePad would make the game awesome. But I dont currently have a GamePad for testing with so this avenue was not explored!!.
+
 - Accessibility<br>
+Wave acessibility was used in this project :https://wave.webaim.org/. I got reasonable results as I have added aria labels to buttons for better usage.
+
 - Lighthouse testing<br>
 the Index.html, play-game.html,end_game_page.html and 404.html were simulated in incognito mode on a desktop and the following results were found.<br>
 ![Screenshot](assets/readme_images/index_lightHouseTests.png)<br>
