@@ -232,7 +232,7 @@ function component(width, height, image_url, x, y, type) {
                 this.maxImageCtr = 2;
                 break;
             case 1://shooting state
-                this.maxImageCtr = 4;
+                this.maxImageCtr = 3;
                 break;
             case 2://explosion state
                 this.maxImageCtr = 10;
