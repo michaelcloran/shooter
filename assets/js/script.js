@@ -235,12 +235,12 @@ function component(width, height, image_url, x, y, type) {
                 this.maxImageCtr = 3;
                 break;
             case 2://explosion state
-                this.maxImageCtr = 9;
+                this.maxImageCtr = 10;
                 break;
         }
         if(this.delay === 2){
             this.delay = 0;
-            if(this.imageCtr <= this.maxImageCtr){
+            if(this.imageCtr < this.maxImageCtr){
                 this.imageCtr++;
                 
             }else{
