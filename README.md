@@ -69,8 +69,10 @@ Notice the four buttons play sound effects or to stop sound effects, the pause b
 It should be also said if you are playing this game on a mobile buttons appear left and right of the canvas to move left and right and to shoot. Also on a mobile the images are scaled in order to be able to make the game playable on a mobile.
 ![Screenshot](assets/readme_images/game-playing-area.png)<br>
 
+screen shot taken from mobile portrait<br>
 ![Screenshot](assets/readme_images/game-playing-area-mobile-portrait.png)<br>
 
+screen shot taken from mobile landscape<br>
 ![Screenshot](assets/readme_images/game-playing-area-mobile-landscape.png)<br>
 
 - The Game Over Page<br>
