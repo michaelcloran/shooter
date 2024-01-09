@@ -241,7 +241,7 @@ function component(width, height, image_url, x, y, type) {
         if(this.delay === 2){
             this.delay = 0;
             if(this.imageCtr < this.maxImageCtr){
-                this.imageCtr++;
+                this.imageCtr++;//note when this.imageCtr is 9 for explosion. The enemy is killed(removed from enemies array) 
                 
             }else{
                 this.state=0;//back to moving state
