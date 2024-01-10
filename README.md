@@ -276,10 +276,21 @@ The following table outlines the testing for this project. I used Google Chrome 
 
 For mobile phone usage an ability to add a GamePad would make the game awesome. But I dont currently have a GamePad for testing with so this avenue was not explored!!.
 
-- Accessibility<br>
-Wave acessibility was used in this project :https://wave.webaim.org/. I got reasonable results as I have added aria labels to buttons for better usage.
+- ### Accessibility<br>
+Wave acessibility was used in this project :https://wave.webaim.org/. This tool was used throughout development and for final testing of the deployed website to check for any aid accessibility testing.
 
-- Lighthouse testing<br>
+- Testing was focused to ensure the following criteria were met:
+
+- All forms have associated labels or aria-labels so that this is read out on a screen reader to users who tab to form inputs
+- Color contrasts meet a minimum ratio as specified in WCAG 2.1 Contrast Guidelines
+- Heading levels are not missed or skipped to ensure the importance of content is relayed correctly to the end user
+- All content is contained within landmarks to ensure ease of use for assistive technology, allowing the user to navigate by page regions
+- All not textual content had alternative text or titles so descriptions are read out to screen readers
+- HTML page lang attribute has been set
+- Aria properties have been implemented correctly
+- WCAG 2.1 Coding best practices being followed
+
+- ### Lighthouse testing<br>
 the Index.html, play-game.html,end_game_page.html and 404.html were simulated in incognito mode on a desktop and the following results were found.<br>
 ![Screenshot](assets/readme_images/index_lightHouseTests.png)<br>
 
@@ -289,12 +300,12 @@ the Index.html, play-game.html,end_game_page.html and 404.html were simulated in
 
 ![Screenshot](assets/readme_images/404_lightHouseTests.png)<br>
 
-- Validation of code<br>
+- ## Validation of code<br>
 
-- CSS<br>
+- ### CSS<br>
 I went to https://jigsaw.w3.org/css-validator/ and put in the url of my site and got the following results<br>
 ![Screenshot](assets/readme_images/CSS_validation.png)<br>
-- HTML<br>
+- ### HTML<br>
 I went to https://validator.w3.org/ to validate the HTML of the landing page.<br>
 ![Screenshot](assets/readme_images/HTML_validator_index.png)<br>
 
@@ -309,7 +320,7 @@ For above screenshot I replacesd the sections with divs and got below screenshot
 ![Screenshot](assets/readme_images/HTML_validation_404.png)<br>
 
 
-- JavaScript<br>
+- ### JavaScript<br>
 I went to https://jshint.com/ and copied over my script.js and found various issues mostly todo with missing semicolons and when this was fixed, some variables had to be used in the this.variable context.
 
 <hr>
