@@ -98,10 +98,7 @@ p.index_text {
     color:orange;
     width: 85vw;
     text-align:left;
-    
-    font-size: 1rem;
-    /*left: 5vw; */ 
-   
+    font-size: 1.5rem;   
 }
 
 table{
@@ -110,7 +107,6 @@ table{
     color:white;
     width: 85vw;
     text-align:left;
-    
     font-size: 1rem;
 }
 
