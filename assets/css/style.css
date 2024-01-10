@@ -93,13 +93,25 @@ body {
 p.index_text {
     padding:10px;
     margin-top: 10px;
+    margin-left: 5vw;
     background-color: blue;
     color:orange;
     width: 85vw;
-    text-align:center;
-    position:fixed;
+    text-align:left;
+    
     font-size: 1rem;
-    left: 5vw;  
+    /*left: 5vw; */ 
+   
+}
+
+table{
+    margin-left: 5vw;
+    background-color: blue;
+    color:white;
+    width: 85vw;
+    text-align:left;
+    
+    font-size: 1rem;
 }
 
 p.game_over_text {
@@ -143,7 +155,8 @@ p.game_over_text {
 
 #playGame{
     padding: 20px;
-    margin-top:300px;
+    margin-top: 40px;
+   /* margin-top:300px;*/
     border-style: solid;
     border-width: 1px;
     border-color: orange;
