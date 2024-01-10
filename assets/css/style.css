@@ -19,7 +19,7 @@ body {
     color: orange;
 }
 
-#404_container h1{
+.container404 h1{
     padding:10px;
     margin-top: 10px;
     margin-left:5vw;
@@ -31,7 +31,42 @@ body {
     left: 5vw; 
 }
 
-#404_container h2{
+.container404 h2{
+    padding:10px;
+    margin-top: 10px;
+    background-color: blue;
+    color:orange;
+    width: 85vw;
+    text-align:center;
+    position:fixed;
+    font-size: 1.5rem;
+    left: 5vw;  
+}
+
+.container404 p{
+    position: fixed;
+    padding:10px;
+    margin-top: 10px;
+    width: 85vw;
+    text-align:center;
+    font-size: 1.5rem;
+    top: 230px;
+    left: 5vw;     
+}
+
+.game_over_text h1{
+    padding:10px;
+    margin-top: 10px;
+    margin-left:5vw;
+    background-color: blue;
+    color:orange;
+    width: 85vw;
+    text-align:center;
+    font-size: 2rem;
+    left: 5vw; 
+}
+
+.game_over_text h2{
     padding:10px;
     margin-top: 10px;
     background-color: blue;
@@ -76,6 +111,7 @@ p.game_over_text {
     width: 85vw;
     text-align:center;
     position:fixed;
+    top: 140px;
     font-size: 1rem;
     left: 5vw;
 }
@@ -138,7 +174,7 @@ p.game_over_text {
 }
 /* media query: laptops and larger (992px and up) */
 @media screen and (min-width: 992px) {
-    p.some-text{
+    p.index_text{
         overflow:auto;
         margin:10px;
         padding-top: 20px;
