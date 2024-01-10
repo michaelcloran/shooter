@@ -54,6 +54,18 @@ body {
     left: 5vw;     
 }
 
+.container404 p a{
+    position: fixed;
+    padding:10px;
+    color:orange;
+    margin-top: 10px;
+    width: 85vw;
+    text-align:center;
+    font-size: 1.5rem;
+    top: 230px;
+    left: 5vw;     
+}
+
 .game_over_text h1{
     padding:10px;
     margin-top: 10px;
