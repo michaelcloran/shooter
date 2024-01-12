@@ -58,18 +58,18 @@ This project is about a simple 2D shooter game written in JavaScript with HTML a
 </p>
 
 ## 2. Existing Features
-- Favicon<br>
+- ### Favicon<br>
 The favicon is a fun icon to show in the browser tabs to quickly identify the Shooter webpage.<br>
 ![Screenshot](assets/readme_images/favicon.png)<br>
 
-- The Landing Page<br>
+- ### The Landing Page<br>
 ![Screenshot](assets/readme_images/landing-page.png)<br>
 
 If you click on the Play Game button the game begins to play<br>
 ![Screenshot](assets/readme_images/play_game_button.png)<br>
 
 
-- The Game Playing Area<br>
+- ### The Game Playing Area<br>
 ![Screenshot](assets/readme_images/play_game_buttons_desktop.png)<br>
 
 Notice the four buttons play sound effects or to stop sound effects, the pause button is used to pause the game and the x button is used to exit the game. This game uses Cookies where the cookie stores the soundOn boolean and the highestScore variable. If on the credits page you achieve a credit more than the cookie highestScore then you are congradulated and a new personal highScore is stored into the Cookie. The game starts off with 6 enemies on the screen and if you kill some, then in the game loop a respawn of 5 - numberOfEnemies is respawned . Also powerups work which is done via a dollar sign box which is put on a random position on the screen and it moves down at a certain speed and if it goes over the screen space available it is garbage collected and a respawn is done. If the box is shot the player gets bonus points credited to their score. A cool effect which should be dealt with is the states of the enemies. State 0 for normal movement where 3 images are cycled through to show the jets. State 1 for discharging weapons where 4 images are cycled through and last but not least where in state 2 where the enemy is dieing 10 images cycled through to show an explosion!! Awesome!!<br>
@@ -94,16 +94,16 @@ screen shot taken from mobile portrait<br>
 screen shot taken from mobile landscape<br>
 ![Screenshot](assets/readme_images/game-playing-area-mobile-landscape.png)<br>
 
-- The Game Over Page<br>
+- ### The Game Over Page<br>
 
-On the Game Over page if your score is higher than the highest score held in a Cookie then you are congratulated and if not your score is just displayed. If you have the highest score then the Cookie is updated for next personal best!!.
+On the Game Over page if your score is higher than the highest score held in a Cookie then you are congratulated and if not your score is just displayed. If you have the highest score then the Cookie is updated for next personal best!!.Also from this screen it is possible to play the game again by clicking on the Play again button.
 
 ![Screenshot](assets/readme_images/game-over-page.png)<br>
 
 - The 404 Error Page<br>
 ![Screenshot](assets/readme_images/404_page.png)<br>
 
-- Features left to implement<br>
+- ### Features left to implement<br>
 The game works well. The game when used on a mobile if you do a touch screen select and move gesture then the controls get a little confused. I am currently unsure how to fix this gesture. If the buttons are clicked the ship can move left and right and shoot. I have chosen to have the player continually scroll left or right as with buttons it hard to continually click the button and move!!. Note that on a desktop I notice some flicker. This would be fixed by double buffering. Another thing that should be added is GamePad functionality. This would truely make the game more playable and then I could on the mobile get the user interface to work similar to a desktop!!.
 <hr>
 <p align="right">
@@ -393,7 +393,7 @@ For above screenshot I replacesd the sections with divs and got below screenshot
 
 
 - ### JavaScript<br>
-I went to https://jshint.com/ and copied over my script.js and found various issues mostly todo with missing semicolons and when this was fixed, some variables had to be used in the this.variable context.
+I went to https://jshint.com/ and copied over my script.js and found various issues mostly todo with missing semicolons and when this was fixed, some variables had to be used in the this.variable context. I use 2 scripts for my project in the play-game.html i define some scripting inside script tags and define global variable in the first and these are used in the second. So jshint points this out as undefined variables.
 
 <hr>
 <p align="right">
