@@ -226,6 +226,24 @@ I went to website craftpix.net and done a search for space and found a free imag
         <td><img src="assets/images/explosion/Circle_explosion10.png"></td>
     </tr>
 </table>
+
+On Desktop, tablet and mobile it was verified that the sprite sequencing worked well. When a shoot state or explode state is iniated if sound is enabled then a shoot or explosion sound is played. This gives the user a better experience. It was also verified on mobile and desktop that the collision detection system worked. If the player collides with an enemy ship then a collision is detected and the game is over as the player has only one life. Also if the player shoots a projectile it is emitted from the center of the player position and it propagates upwards if it reaches the top of the screen and goes off the screen then its removed through garbage collection. If the shot collides with an emeny then its garbage collected and the enemy health is decremented. If the enemy has no health left it goes into the dieing/explosion state and the sprite sequence for explosion is cycled through and the enemy is removed from the game. A respawn is done if the number of enemies is below 5. The respawn algorithm adds the number of enemies to the screen at y = 0 and x is set to a random number to position the enemy on the visible screen.
+
+The collision detection system is just a simple 2D bounding box collision detection algortithm. If one box overlaps another box then a collision is detected and the system does the appropiate algorithm for the collision.(play sound and go into dieing sequence etc)
+
+### Responsiveness
+All pages were tested to ensure responsiveness on screen sizes from 280px and upwards as defined in WCAG 2.1 Reflow criteria for responsive design on Chrome, Edge, Firefox and Opera browsers.
+
+Steps to test:
+
+Open browser and navigate to Shooter
+Open the developer tools (right click and inspect)
+Set to responsive and decrease width to 280px by selecting Galaxy Fold
+Click and drag the responsive window to maximum width
+Expected:
+
+Website is responsive on all screen sizes and no images are pixelated or stretched. No elements overlap.
+
 - ### Functional tests<br>
 It should be noted about mobile portrait or landscape usage. When on the landing page you should decide which orientation to play the game in and switch to it on the landing page as if you switch orientation during the game, it upsets the user interface!!.<br>
 The following table outlines functional testing for this project. I used Google Chrome for most testing but I have also used Microsoft Edge and an actual mobile phone and got reasonable results.
