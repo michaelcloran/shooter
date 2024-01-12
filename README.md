@@ -248,7 +248,7 @@ Website is responsive on all screen sizes and no images are pixelated or stretch
 
 - ### Functional tests<br>
 It should be noted about mobile portrait or landscape usage. When on the landing page you should decide which orientation to play the game in and switch to it on the landing page as if you switch orientation during the game, it upsets the user interface!!.<br>
-The following table outlines functional testing for this project. I used Google Chrome for most testing but I have also used Microsoft Edge and an actual mobile phone and got reasonable results.
+The following table outlines functional testing for this project. I used Google Chrome for most testing but I have also used Microsoft Edge, Firefox, Opera and an actual mobile phone and got reasonable results.
 
 <table>
     <tr>
