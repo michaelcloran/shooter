@@ -122,15 +122,12 @@ p.game_over_text {
 }
 
 #score{
-    
     padding:10px;
     margin-top: 10px;
     background-color: blue;
     color:orange;
-    width: 85vw;
     text-align:center;
     font-size: 1.5rem;
-    left: 5vw;
 }
 
 #score-value{
@@ -158,7 +155,6 @@ p.game_over_text {
 
 #playSoundTrack, #pauseSoundTrack, #pauseGame, #exitGame{
     padding: 20px;
-   
     border-style: solid;
     border-width: 1px;
     border-color: orange;
