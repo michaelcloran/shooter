@@ -85,7 +85,7 @@ On a desktop to move the player the left and right arrow keys are used and to sh
 The enemy has to be shot. The enemy takes 2 shots to be killed
 ![Screenshot](assets/readme_images/enemy.png)<br>
 
-The player is just a spaceship shown at the bottom of the screen and it takes 1 shot to be killed or a collision with an enemy spacespip!.
+The player is just a spaceship shown at the bottom of the screen and it takes 1 shot to be killed or a collision with an enemy spaceship!.
 ![Screenshot](assets/readme_images/player.png)<br>
 
 For mobile devices the left right and shoot buttons are used for controls.
