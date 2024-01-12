@@ -507,6 +507,9 @@ function respawn(){
         if(window.innerWidth < 1050){
             enemyPiece.width = Math.floor(enemyPiece.width * 0.2);
             enemyPiece.height =  Math.floor(enemyPiece.height * 0.2);
+        }else{
+            enemyPiece.width = Math.floor(enemyPiece.width * 0.6);
+            enemyPiece.height =  Math.floor(enemyPiece.height * 0.6);
         }
 
         enemies.push(enemyPiece);
