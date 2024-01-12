@@ -469,6 +469,7 @@ I used the above to give me ideas on how to resize the images for mobile and sma
 - YouTube Space Invaders tutorial: https://www.youtube.com/watch?v=MCVU0w73uKI
 - Book used as reference: 2D Game Collision Detection, An introduction to clashing geometry in games by Thomas Schwarzl.
 - Book used as reference: Game Programming All In One Third Edition by Jonathan S. Harbour.
+- I'd like to credit my mentor for some good advice Gareth McGirr.
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>
