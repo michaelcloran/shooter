@@ -152,7 +152,6 @@ p.game_over_text {
 #playGame{
     padding: 20px;
     margin-top: 40px;
-   /* margin-top:300px;*/
     border-style: solid;
     border-width: 1px;
     border-color: orange;
@@ -209,7 +208,7 @@ p.game_over_text {
 
     #playGame{
         padding: 20px;
-        margin-top:480px;
+        margin-top:40px;
         border-style: solid;
         border-width: 1px;
         border-color: orange;
