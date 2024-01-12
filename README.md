@@ -31,7 +31,8 @@
 
 
 -5. [Testing](#5-testing)<br>
-- Tests Done/Functional tests<br>
+- Tests Done<br>
+- Functional tests<br>
 - Accessibility<br>
 - Lighthouse testing<br>
 - Validation of code<br>
@@ -64,12 +65,28 @@ The favicon is a fun icon to show in the browser tabs to quickly identify the Sh
 - The Landing Page<br>
 ![Screenshot](assets/readme_images/landing-page.png)<br>
 
+If you click on the Play Game button the game begins to play<br>
+![Screenshot](assets/readme_images/play_game_button.png)<br>
+
+
 - The Game Playing Area<br>
+![Screenshot](assets/readme_images/play_game_buttons_desktop.png)<br>
+
 Notice the four buttons play sound effects or to stop sound effects, the pause button is used to pause the game and the x button is used to exit the game. This game uses Cookies where the cookie stores the soundOn boolean and the highestScore variable. If on the credits page you achieve a credit more than the cookie highestScore then you are congradulated and a new personal highScore is stored into the Cookie. The game starts off with 6 enemies on the screen and if you kill some, then in the game loop a respawn of 5 - numberOfEnemies is respawned . Also powerups work which is done via a dollar sign box which is put on a random position on the screen and it moves down at a certain speed and if it goes over the screen space available it is garbage collected and a respawn is done. If the box is shot the player gets bonus points credited to their score. A cool effect which should be dealt with is the states of the enemies. State 0 for normal movement where 3 images are cycled through to show the jets. State 1 for discharging weapons where 4 images are cycled through and last but not least where in state 2 where the enemy is dieing 10 images cycled through to show an explosion!! Awesome!!<br>
 It should be also said if you are playing this game on a mobile buttons appear left and right of the canvas to move left and right and to shoot. Also on a mobile the images are scaled in order to be able to make the game playable on a mobile.<br>
 
 screen shot taken from desktop.<br>
 ![Screenshot](assets/readme_images/game-playing-area.png)<br>
+
+On a desktop to move the player the left and right arrow keys are used and to shoot use the spacebar.<br>
+
+The enemy has to be shot. The enemy takes 2 shots to be killed
+![Screenshot](assets/readme_images/enemy.png)<br>
+
+The player is just a spaceship shown at the bottom of the screen and it takes 1 shot to be killed or a collision with an enemy spacespip!.
+![Screenshot](assets/readme_images/player.png)<br>
+
+For mobile devices the left right and shoot buttons are used for controls.
 
 screen shot taken from mobile portrait<br>
 ![Screenshot](assets/readme_images/game-playing-area-mobile-portrait.png)<br>
@@ -78,6 +95,9 @@ screen shot taken from mobile landscape<br>
 ![Screenshot](assets/readme_images/game-playing-area-mobile-landscape.png)<br>
 
 - The Game Over Page<br>
+
+On the Game Over page if your score is higher than the highest score held in a Cookie then you are congratulated and if not your score is just displayed. If you have the highest score then the Cookie is updated for next personal best!!.
+
 ![Screenshot](assets/readme_images/game-over-page.png)<br>
 
 - The 404 Error Page<br>
@@ -172,9 +192,43 @@ I went to website craftpix.net and done a search for space and found a free imag
 </p>
 
 ## 5. Testing
-- ### Tests Done/ Functional tests<br>
+- ### Tests Done.
+<table>
+<fieldset>Sprite sequences</fieldset>
+    <tr>
+        <th>state</th>
+        <th>sprite sequences</th>
+    </tr>
+    <tr>
+        <td>Move</td>
+        <td><img src="assets/images/corvette/Move_1_1.png"> </td>
+        <td><img src="assets/images/corvette/Move_1_2.png"></td>
+        <td><img src="assets/images/corvette/Move_1_3.png"></td>
+    </tr>
+     <tr>
+        <td>Shoot</td>
+        <td><img src="assets/images/corvette/Attack_1_1.png"> </td>
+        <td><img src="assets/images/corvette/Attack_1_2.png"></td>
+        <td><img src="assets/images/corvette/Attack_1_3.png"></td>
+        <td><img src="assets/images/corvette/Attack_1_4.png"></td>
+    </tr>
+    <tr>
+        <td>Explode</td>
+        <td><img src="assets/images/explosion/Circle_explosion1.png"> </td>
+        <td><img src="assets/images/explosion/Circle_explosion2.png"></td>
+        <td><img src="assets/images/explosion/Circle_explosion3.png"></td>
+        <td><img src="assets/images/explosion/Circle_explosion4.png"></td>
+        <td><img src="assets/images/explosion/Circle_explosion5.png"> </td>
+        <td><img src="assets/images/explosion/Circle_explosion6.png"></td>
+        <td><img src="assets/images/explosion/Circle_explosion7.png"></td>
+        <td><img src="assets/images/explosion/Circle_explosion8.png"></td>
+        <td><img src="assets/images/explosion/Circle_explosion9.png"></td>
+        <td><img src="assets/images/explosion/Circle_explosion10.png"></td>
+    </tr>
+</table>
+- ### Functional tests<br>
 It should be noted about mobile portrait or landscape usage. When on the landing page you should decide which orientation to play the game in and switch to it on the landing page as if you switch orientation during the game, it upsets the user interface!!.<br>
-The following table outlines the testing for this project. I used Google Chrome for most testing but I have also used Microsoft Edge and an actual mobile phone and got reasonable results.
+The following table outlines functional testing for this project. I used Google Chrome for most testing but I have also used Microsoft Edge and an actual mobile phone and got reasonable results.
 
 <table>
     <tr>
