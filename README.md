@@ -161,7 +161,7 @@ Above shows the game over screen for a mobile device.
 ![Screenshot](assets/readme_images/404-page.png)<br>
 
 
-Above shows the 404 not found screen for mobile and Desktop. It redirects to the landing page after 10 seconds.
+Above shows the 404 not found screen for mobile and Desktop. It redirects to the landing page after 10 seconds. This has since been changed. The 404 page no longer has the redirect the user has to manually click on a link to get back to the landing page.
 <hr>
 <p align="right">
     <a href="#top" >Goto Top</a>
