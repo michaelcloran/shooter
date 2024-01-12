@@ -51,6 +51,8 @@
 
 ## 1. Shooter Overview
 
+![Screenshot](assets/readme_images/mockup_overview.png)<br>
+
 This project is about a simple 2D shooter game written in JavaScript with HTML and CSS. Link to online website: https://michaelcloran.github.io/shooter/index.html
 <hr>
 <p align="right">
@@ -72,7 +74,7 @@ If you click on the Play Game button the game begins to play<br>
 - ### The Game Playing Area<br>
 ![Screenshot](assets/readme_images/play_game_buttons_desktop.png)<br>
 
-Notice the four buttons play sound effects or to stop sound effects, the pause button is used to pause the game and the x button is used to exit the game. This game uses Cookies where the cookie stores the soundOn boolean and the highestScore variable. If on the credits page you achieve a credit more than the cookie highestScore then you are congradulated and a new personal highScore is stored into the Cookie. The game starts off with 6 enemies on the screen and if you kill some, then in the game loop a respawn of 5 - numberOfEnemies is respawned . Also powerups work which is done via a dollar sign box which is put on a random position on the screen and it moves down at a certain speed and if it goes over the screen space available it is garbage collected and a respawn is done. If the box is shot the player gets bonus points credited to their score. A cool effect which should be dealt with is the states of the enemies. State 0 for normal movement where 3 images are cycled through to show the jets. State 1 for discharging weapons where 4 images are cycled through and last but not least where in state 2 where the enemy is dieing 10 images cycled through to show an explosion!! Awesome!!<br>
+Notice the four buttons play sound effects or to stop sound effects, the pause button is used to pause the game and the x button is used to exit the game Also notice the score which is positioned above this four button div. This game uses Cookies where the cookie stores the soundOn boolean and the highestScore variable. If on the credits page you achieve a credit more than the cookie highestScore then you are congradulated and a new personal highScore is stored into the Cookie. The game starts off with 6 enemies on the screen and if you kill some, then in the game loop a respawn of 5 - numberOfEnemies is respawned . Also powerups work which is done via a dollar sign box which is put on a random position on the screen and it moves down at a certain speed and if it goes over the screen space available it is garbage collected and a respawn is done. If the box is shot the player gets bonus points credited to their score. A cool effect which should be dealt with is the states of the enemies. State 0 for normal movement where 3 images are cycled through to show the jets. State 1 for discharging weapons where 4 images are cycled through and last but not least where in state 2 where the enemy is dieing 10 images cycled through to show an explosion!! Awesome!!<br>
 It should be also said if you are playing this game on a mobile buttons appear left and right of the canvas to move left and right and to shoot. Also on a mobile the images are scaled in order to be able to make the game playable on a mobile.<br>
 
 screen shot taken from desktop.<br>
