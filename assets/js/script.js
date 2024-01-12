@@ -84,7 +84,7 @@ function runGame(){
     enemies.push(enemy6Piece);
     
     //see if need to scale images for mobile or tablet                                      
-    if(window.innerWidth < 1050 || window.screen.orientation == 90 || window.screen.orientation === -90){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
+    if(window.innerWidth < 1050 ){// digout https://stackoverflow.com/questions/19262141/resize-image-with-javascript-canvas-smoothly
         widthOfCanvas = Math.floor(window.innerWidth* 0.8);//portrait on mobile
         document.getElementById("left").style.display= "block";//need left and right buttons for mobiles
         document.getElementById("right").style.display= "block";
@@ -100,6 +100,12 @@ function runGame(){
         for(let enemy of enemies){
             enemy.width = Math.floor(enemy.width * 0.2);
             enemy.height =  Math.floor(enemy.height * 0.2);
+        
+        }
+    }else{
+        for(let enemy of enemies){
+            enemy.width = Math.floor(enemy.width * 0.6);
+            enemy.height =  Math.floor(enemy.height * 0.6);
         
         }
     }
