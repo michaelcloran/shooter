@@ -102,7 +102,7 @@ function runGame(){
             enemy.height =  Math.floor(enemy.height * 0.2);
         
         }
-    }else{
+    }else{//desktop
         for(let enemy of enemies){
             enemy.width = Math.floor(enemy.width * 0.6);
             enemy.height =  Math.floor(enemy.height * 0.6);
@@ -223,7 +223,7 @@ function component(width, height, image_url, x, y, type) {
     this.health = 2;
     this.state = 0;//moving state
     this.maxImageCtr = 0;
-    this.delay = 2;
+    this.delay = 0;//2
     this.imageCtr = 0;
     this.width = width;
     this.height = height;
