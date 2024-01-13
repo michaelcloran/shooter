@@ -1,6 +1,6 @@
 //to make sure the site is loaded
 document.addEventListener("DOMContentLoaded", function(){
-    
+    loadImagesAsObjects();
   runGame();
 });
 
@@ -35,6 +35,7 @@ var enemyImages = [[
     "assets/images/explosion/Circle_explosion9.png",
     "assets/images/explosion/Circle_explosion10.png"]
 ] ;
+var enemyImagesObjects = [];
 var numberEnemies = 0;
 var widthOfCanvas = Math.floor(window.innerWidth);//landscape 0.7
 
@@ -52,6 +53,25 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
         myGamePiece.y = window.innerHeight -110;//55
     }
 });
+
+function loadImagesAsObjects(){
+   // var enemyImagesObjects = [];
+    for(let i=0; i<3;i++){
+        enemyImagesObjects[i] = [];
+    }
+    for(let i=0; i<3; i++){
+        enemyImagesObjects[0][i] = new Image()
+        enemyImagesObjects[0][i].src = enemyImages[0][i];
+    }
+    for(let i=0; i<4; i++){
+        enemyImagesObjects[1][i] = new Image()
+        enemyImagesObjects[1][i].src = enemyImages[1][i];
+    }
+    for(let i=0; i<10; i++){
+        enemyImagesObjects[2][i] = new Image()
+        enemyImagesObjects[2][i].src = enemyImages[2][i];
+    }
+}
 
 /**
  * the main game "loop", called when the script is first loaded
@@ -274,21 +294,10 @@ function component(width, height, image_url, x, y, type) {
                 this.height);
   
         } else if(type == "image_enemy"){ 
-            this.image.src = enemyImages[this.state][this.imageCtr];
-
-            if(this.state == 2){//if explosion do this
-                this.image.onload = () => {//make sure it loaded
-                    ctx.drawImage(this.image, 
-                        this.x, 
-                        this.y,
-                        this.width, this.height);
-                };
-            }else{
-                ctx.drawImage(this.image, 
-                    this.x, 
-                    this.y,
-                    this.width, this.height);
-            }
+            ctx.drawImage(enemyImagesObjects[this.state][this.imageCtr], 
+                this.x, 
+                this.y,
+                this.width, this.height);
             
         }else if(type == 'image_shot' || type == 'image_bonus'){
             if(this.y > 0){//for shots checks if the y position is off the screen
