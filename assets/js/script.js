@@ -1,6 +1,6 @@
 //to make sure the site is loaded
 document.addEventListener("DOMContentLoaded", function(){
-    loadImagesAsObjects();
+  loadImagesAsObjects();
   runGame();
 });
 
@@ -55,19 +55,19 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
 });
 
 function loadImagesAsObjects(){
-   // var enemyImagesObjects = [];
+  
     for(let i=0; i<3;i++){
         enemyImagesObjects[i] = [];
     }
-    for(let i=0; i<3; i++){
+    for(let i=0; i<3; i++){//move
         enemyImagesObjects[0][i] = new Image()
         enemyImagesObjects[0][i].src = enemyImages[0][i];
     }
-    for(let i=0; i<4; i++){
+    for(let i=0; i<4; i++){//shoot
         enemyImagesObjects[1][i] = new Image()
         enemyImagesObjects[1][i].src = enemyImages[1][i];
     }
-    for(let i=0; i<10; i++){
+    for(let i=0; i<10; i++){//explode
         enemyImagesObjects[2][i] = new Image()
         enemyImagesObjects[2][i].src = enemyImages[2][i];
     }
@@ -294,6 +294,8 @@ function component(width, height, image_url, x, y, type) {
                 this.height);
   
         } else if(type == "image_enemy"){ 
+            //by using the image objects multi dimensional array the images are drawn quicker
+            //which is more reliable
             ctx.drawImage(enemyImagesObjects[this.state][this.imageCtr], 
                 this.x, 
                 this.y,
