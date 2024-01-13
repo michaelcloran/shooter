@@ -395,7 +395,7 @@ I went to https://validator.w3.org/ to validate the HTML of the landing page.<br
 
 ![Screenshot](assets/readme_images/HTML_validator_play-game.png)<br>
 
-For above screenshot I replacesd the sections with divs and got below screenshot<br>
+For above screenshot I replaced the sections with divs and got below screenshot<br>
 
 ![Screenshot](assets/readme_images/HTML_validator_play-game2.png)<br>
 
