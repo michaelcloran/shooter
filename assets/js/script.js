@@ -275,12 +275,20 @@ function component(width, height, image_url, x, y, type) {
   
         } else if(type == "image_enemy"){ 
             this.image.src = enemyImages[this.state][this.imageCtr];
-            this.image.onload = () => {
+
+            if(this.state == 2){//if explosion do this
+                this.image.onload = () => {//make sure it loaded
+                    ctx.drawImage(this.image, 
+                        this.x, 
+                        this.y,
+                        this.width, this.height);
+                };
+            }else{
                 ctx.drawImage(this.image, 
                     this.x, 
                     this.y,
                     this.width, this.height);
-            };
+            }
             
         }else if(type == 'image_shot' || type == 'image_bonus'){
             if(this.y > 0){//for shots checks if the y position is off the screen
