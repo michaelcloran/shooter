@@ -1,5 +1,6 @@
 //to make sure the site is loaded
 document.addEventListener("DOMContentLoaded", function(){
+    
   runGame();
 });
 
@@ -34,7 +35,6 @@ var enemyImages = [[
     "assets/images/explosion/Circle_explosion9.png",
     "assets/images/explosion/Circle_explosion10.png"]
 ] ;
-
 var numberEnemies = 0;
 var widthOfCanvas = Math.floor(window.innerWidth);//landscape 0.7
 
@@ -66,15 +66,16 @@ function runGame(){
         widthOfCanvas = Math.floor(window.innerWidth);
         myGamePiece = new component(64,93,"assets/images/fighter/idle_rotated90cc.png", widthOfCanvas/2,window.innerHeight-160, "image_defender");
     }
-   
-    let enemy1Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
-    let enemy2Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+  
+    let enemy1Piece = new component(104,179,enemyImages[0][0], getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy2Piece = new component(104,179,enemyImages[0][0], getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
-    let enemy3Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
-    let enemy4Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy3Piece = new component(104,179,enemyImages[0][0], getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy4Piece = new component(104,179,enemyImages[0][0], getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
-    let enemy5Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
-    let enemy6Piece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy5Piece = new component(104,179,enemyImages[0][0], getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+    let enemy6Piece = new component(104,179,enemyImages[0][0], getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+
 
     enemies.push(enemy1Piece);
     enemies.push(enemy2Piece);
@@ -502,7 +503,7 @@ function respawn(){
     let currentEnemiesCount = enemies.length;
     let enemiesToAdd = 5 - currentEnemiesCount;//keeps a nice set of enemies on screen
     for(let i=0; i<enemiesToAdd; i++){
-        let enemyPiece = new component(104,179,"assets/images/corvette/idle_rotated90.png", getRandomPosition(widthOfCanvas-104),0, "image_enemy");
+        let enemyPiece = new component(104,179,enemyImages[0][0], getRandomPosition(widthOfCanvas-104),0, "image_enemy");
 
         if(window.innerWidth < 1050){
             enemyPiece.width = Math.floor(enemyPiece.width * 0.2);
