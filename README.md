@@ -199,7 +199,15 @@ I went to website craftpix.net and done a search for space and found a free imag
 <fieldset>Sprite sequences</fieldset>
     <tr>
         <th>state</th>
-        <th>sprite sequences</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
     <tr>
         <td>Move</td>
@@ -245,6 +253,8 @@ Click and drag the responsive window to maximum width
 Expected:
 
 Website is responsive on all screen sizes and no images are pixelated or stretched. No elements overlap.
+
+It should be noted that on FireFox especially that the explosion sequence does not always play. I am unsure what the problem is as it works normally. If you refresh the screen it goes through the sequence.
 
 - ### Functional tests<br>
 It should be noted about mobile portrait or landscape usage. When on the landing page you should decide which orientation to play the game in and switch to it on the landing page as if you switch orientation during the game, it upsets the user interface!!.<br>
