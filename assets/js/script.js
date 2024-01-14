@@ -56,7 +56,7 @@ portrait.addEventListener("change", function(e) {//digout https://dev.to/smpnjn/
 
 function loadImagesAsObjects(){
   
-    for(let i=0; i<3;i++){
+    for(let i=0; i<3;i++){//states 3
         enemyImagesObjects[i] = [];
     }
     for(let i=0; i<3; i++){//move
