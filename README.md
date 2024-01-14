@@ -254,7 +254,9 @@ Expected:
 
 Website is responsive on all screen sizes and no images are pixelated or stretched. No elements overlap.
 
-It should be noted that on FireFox especially that the explosion sequence does not always play. I am unsure what the problem is as it works normally. If you refresh the screen it goes through the sequence.
+It should be noted that on FireFox especially that the explosion sequence does not always play. I am unsure what the problem is as it works normally. I had a closer look at the algorithm for displaying images on state and image counter and noticed that I was loading into an image object every 20ms for each enemy on the screen. This was bad!!.
+
+My fix In words was to load the enemy image objects and store the image objects into a 2 dimensional array and load that at the top of the JavaScript file. So by loading the objects at the start and only once then when used you will only need to index the correct state and image for the drawImage function. This is much better!!.
 
 - ### Functional tests<br>
 It should be noted about mobile portrait or landscape usage. When on the landing page you should decide which orientation to play the game in and switch to it on the landing page as if you switch orientation during the game, it upsets the user interface!!.<br>
