@@ -267,6 +267,125 @@ The following table outlines functional testing for this project. I used Google 
 
 <table>
     <tr>
+        <th>Feature</th>
+        <th>Page</th>
+        <th>Test</th>
+        <th>Results</th>
+    </tr>
+    <tr>
+        <td>Play Game button</td>
+        <td>landing page</td>
+        <td>when clicked on</td>
+        <td>goes to the play-game.html page and starts the game</td>
+    </tr>
+     <tr>
+        <td><img src="assets/readme_images/score-display.png" alt="score display"></td>
+        <td>play-game.html</td>
+        <td>Display the score</td>
+        <td>when you shoot an ememy ship it increments by 100 points or if you shoot a dollar sign box you get 500 points</td>
+    </tr>
+     <tr>
+        <td><img src="assets/readme_images/play-sound-button.png" alt="play sound button"></td>
+        <td>play-game.html</td>
+        <td>when this button is clicked on</td>
+        <td>It enables sound and starts playing the background sound track</td>
+    </tr>
+     <tr>
+        <td><img src="assets/readme_images/stop-sound-button.png" alt="stop sound button"></td>
+        <td>play-game.html</td>
+        <td>when clicked on</td>
+        <td>The sound is disabled</td>
+    </tr>
+     <tr>
+        <td><img src="assets/readme_images/pause-game-button.png" alt="pause game button"></td>
+        <td>play-game.html</td>
+        <td>when clicked on</td>
+        <td>The game pauses</td>
+    </tr>
+    <tr>
+        <td><img src="assets/readme_images/stop-game-button.png" alt="end game button"></td>
+        <td>play-game.html</td>
+        <td>when clicked on</td>
+        <td>The game is ended and the end_game_page.html is loaded with the score appended to the url</td>
+    </tr>
+    <tr>
+        <td><img src="assets/images/corvette/Move_1_1.png" alt="enemy ship"></td>
+        <td>play-game.html</td>
+        <td>when a laser shot collides with</td>
+        <td>The score is credited by 100 points and if the health is zero then the enemy ship goes from the moving or shooting state to the dieing state and an explosion sequence is displayed</td>
+    </tr>
+    <tr>
+        <td><img src="assets/readme_images/dollar-powerup.png" alt="power up image"></td>
+        <td>play-game.html</td>
+        <td>when shot</td>
+        <td>500 points are credited to the score value</td>
+    </tr>
+    <tr>
+        <td><img src="assets/images/fighter/idle_rotated90cc.png" alt="defender image"></td>
+        <td>play-game.html</td>
+        <td>the defender</td>
+        <td>Can be moved left or right via arrow keys and can shoot with the spacebar. Note: On a tablet or mobile the movement is done with buttons on the screen for left and right and a button on the screen for shoot</td>
+    </tr>
+    <tr>
+        <td>laser sound</td>
+        <td>play-game.html</td>
+        <td>when sound is enabled and a shot is implementated</td>
+        <td>Laser sound is played</td>
+    </tr>
+    <tr>
+        <td>explosion sound</td>
+        <td>play-game.html</td>
+        <td>when an enemy ship explodes</td>
+        <td>An explosion sound is played</td>
+    </tr>
+    <tr>
+        <td>Score</td>
+        <td>end_game_page.html</td>
+        <td>the score is displayed on the third blue background row</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Play again button</td>
+        <td>end_game_page.html</td>
+        <td>when clicked</td>
+        <td>loads the index.html page</td>
+    </tr>
+    <tr>
+        <td>explosion sequence</td>
+        <td>play-game.html</td>
+        <td>When the enemy ship is hit the second time the health is zero and the enemy goes into the explosion state where a sequence of 10 images are displayed on the screen and once complete the enemy ship is removed from the game </td>
+        <td>A sequence of images are cycled through</td>
+    </tr>
+    <tr>
+        <td>enemy ship move sequence</td>
+        <td>play-game.html</td>
+        <td>when in normal state(default) the ships image is cycled through 3 images</td>
+        <td>Gives the appearance of movement</td>
+    </tr>
+    <tr>
+        <td>Enemy ship shoots</td>
+        <td>play-game.html</td>
+        <td>When this state is iniated then the enemy ship goes into the shooting state and 4 images are cycled through</td>
+        <td>Give the appearance of shooting</td>
+    </tr>
+    <tr>
+        <td>Defender shoots</td>
+        <td>play-game.html</td>
+        <td><img src="assets/images/fighter/shot_weapon1.png" alt="shoot image of laser"> Is shown and it moves upwards from the bottom of the screen to the top of the screen</td>
+        <td>If the laser collides with anything points are credited to the score and the laser instance is garbage collected/removed from game</td>
+    </tr>
+    <tr>
+        <td>Enemy shoots</td>
+        <td>play-game.html</td>
+        <td><img src="assets/images/fighter/shot_weapon1.png" alt="shoot image of laser">This image is display and it moves from the enemy ship to the bottom of the screen</td>
+        <td>If the laser collides with the defender then the game is over</td>
+    </tr>
+</table>
+
+#### General test done
+These tests were to test the game for working on all listed devices and it was fully functional for these tests!!
+<table>
+    <tr>
         <th>device</th>
         <th>portrait</th>
         <th>landscape</th>
