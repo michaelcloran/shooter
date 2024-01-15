@@ -311,7 +311,7 @@ The following table outlines functional testing for this project. I used Google 
     <tr>
         <td><img src="assets/images/corvette/Move_1_1.png" alt="enemy ship"></td>
         <td>play-game.html</td>
-        <td>when a laser shot collides with</td>
+        <td>when a laser shot collides with enemy ship</td>
         <td>The score is credited by 100 points and if the health is zero then the enemy ship goes from the moving or shooting state to the dieing state and an explosion sequence is displayed</td>
     </tr>
     <tr>
