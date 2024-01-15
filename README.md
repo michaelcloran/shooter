@@ -254,7 +254,10 @@ Expected:
 
 Website is responsive on all screen sizes and no images are pixelated or stretched. No elements overlap.
 
+An example of a bug<br>
 It should be noted that on FireFox especially that the explosion sequence does not always play. I am unsure what the problem is as it works normally. I had a closer look at the algorithm for displaying images on state and image counter and noticed that I was loading into an image object every 20ms for each enemy on the screen. This was bad!!.
+
+Symptons when the enemy ship goes into the dieing state it just kinda hangs/stalls for a while and then removes the enemy ship. It may or may not display 1 or more images from the explosion sprite sheet.
 
 My fix In words was to load the enemy image objects and store the image objects into a 2 dimensional array and load that at the top of the JavaScript file. So by loading the objects at the start and only once then when used you will only need to index the correct state and image for the drawImage function. This is much better!!.
 
